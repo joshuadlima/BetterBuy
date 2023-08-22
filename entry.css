@@ -93,10 +93,7 @@ Styling for the validation box starts here
 }
 #match-password-message
 {
-    color:red;
-    display: flex;
-    justify-content: center;
     background-color:whitesmoke;
     font-weight: 700;
-    margin:0 171px 0 171px;
+    
 }
