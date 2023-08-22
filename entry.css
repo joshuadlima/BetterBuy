@@ -62,3 +62,41 @@ form .btn:active {
     font-size: 12px;
     color: #777;
 }
+/* 
+Styling for the validation box starts here
+*/
+#message{
+   
+    background-color:whitesmoke;
+    width: 500px;
+    padding:10px;
+}
+.message-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.valid
+{
+    color:green;
+}
+.valid::after{
+    content:" ✔";
+}
+.invalid
+{
+    color:red;
+
+}
+.invalid::after{
+    content:" ✖";
+}
+#match-password-message
+{
+    color:red;
+    display: flex;
+    justify-content: center;
+    background-color:whitesmoke;
+    font-weight: 700;
+    margin:0 171px 0 171px;
+}
