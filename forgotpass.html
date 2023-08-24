@@ -6,22 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BetterBuy</title>
     <link rel="stylesheet" href="entry.css">
-
+    <script src="validation.js" defer></script>
 </head>
+
 
 <body>
     <div class="container">
-        <h1>Forgot Password :(</h1>
-        <form action="#" method="POST">
-            <input type="text" placeholder="username" class="field">
-            <input type="number" placeholder="OTP sent on email id" class="field">
-            <input type="submit" value="RESET PASSWORD" class="btn">
+        <h1>Authenticate</h1>
+        <form action="forgotpass_auth.php" method="POST">
+            <input type="password" placeholder="otp" class="field" name="otp">
+            <input type="password" id="pswrd1" placeholder="enter new password" class="field" name="password">
+            <input type="password" id="pswrd2" placeholder="re-enter password" class="field" name="repassword">
+            <input type="submit" value="RESET PASSWORD" class="btn" disabled id="signup">
         </form>
+    </div>
 
-        <div class="pass-link">
-            <strong>
-                <a href="index.html">New user? Sign up!</a>
-            </strong>
+
+    <div class="message-container">
+        <div id="message">
+            <h3>Password must contain the following:</h3>
+            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+            <p id="number" class="invalid">A <b>number</b></p>
+            <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+            <p id="match-password-message" class="invalid">The passwords do not match</p>
         </div>
     </div>
 </body>
