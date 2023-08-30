@@ -19,6 +19,7 @@ $otp = $_SESSION['otp'];
 
 $getotp = $_POST['otp'];
 $newpassword = $_POST['password'];
+$newpassword = hash('md5', $newpassword); // hash the password
 
 if ($otp == $getotp) {
     echo "password changed successfully";

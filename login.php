@@ -16,6 +16,11 @@ if (!$conn)
 // get user details from form
 $username = $_POST['username'];
 $password = $_POST['password'];
+$password = hash('md5', $password); // get the password hash
+
+// save username for future reference
+session_start();
+$_SESSION['username'] = $username;
 
 // check if user already exists
 $sql = "SELECT * FROM information WHERE username='$username'; ";
@@ -29,6 +34,7 @@ if (mysqli_num_rows($result) == 0) {
         echo "wrong password entered";
     } else {
         echo "welcome $username";
+        header('Location: homepage.php');
     }
 
 }
