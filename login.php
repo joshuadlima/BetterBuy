@@ -34,7 +34,7 @@ if (mysqli_num_rows($result) == 0) {
         echo "wrong password entered";
     } else {
         echo "welcome $username";
-        header('Location: homepage.php');
+        header('Location: ./homepage/index.php');
     }
 
 }
