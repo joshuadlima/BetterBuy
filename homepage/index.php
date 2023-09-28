@@ -1,3 +1,8 @@
+<?php
+include './connect.php';
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -38,11 +43,21 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
+
+                            <?php
+
+                            $select_cat = "SELECT * FROM `categories`";
+                            $result_cat = mysqli_query($conn, $select_cat);
+                            $row_data = mysqli_fetch_assoc($result_cat);
+
+                            echo $row_data['category_title'];
+
+                            ?>
+                            <!-- <li><a class="dropdown-item" href="#">Another action</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li> -->
                         </ul>
                     </li>
                     <li class="nav-item">
