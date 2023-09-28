@@ -28,11 +28,14 @@ include('../includes/connect.php');
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet" />
 </head>
 
-<body>
+<body style="background-color: rgb(250, 250, 187);">
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg" style="background-color: #abd3ef;">
+    <nav class="navbar navbar-expand-lg" style="background-color: orange;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">BetterBuy.com</a>
+
+            <a class="navbar-brand mt-2 mt-sm-0 rounded" style="background-color: brown;" href="index.php">
+                <img src="../resources/logo.png" height="50" alt="BetterBuy Logo" loading="lazy" />
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                 aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -96,8 +99,8 @@ include('../includes/connect.php');
     <div class="text-center product-container">
 
         <div class="row">
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card shadow bg-white rounded">
+            <div class="col-lg-3 col-md-6 mb-4" >
+                <div class="card shadow bg-white rounded" >
                     <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                         <img src="https://img.freepik.com/free-photo/flowing-purple-mountain-spiral-bright-imagination-generated-by-ai_188544-9853.jpg?q=10&h=200"
                             class="card-img-top" />
@@ -230,7 +233,7 @@ include('../includes/connect.php');
 
 
     <!-- footer -->
-    <div class="p-3 text-center" style="background-color: #abd3ef;">
+    <div class="p-3 text-center" style="background-color: orange;">
         © 1996-2023, BetterBuy.com, Inc. or its affiliates
     </div>
 
