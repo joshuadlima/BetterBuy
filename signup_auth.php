@@ -24,7 +24,7 @@ $getotp = $_POST['otp'];
 
 if ($otp == $getotp) {
     // echo "user has been authenticated successfully";
-    header('Location: homepage.html');
+    header('Location: ./homepage/index.php');
 
     // enter user details into the database
     $sql = "INSERT INTO `information` (`first_name`, `last_name`, `emailid`, `username`, `password`) VALUES ('$first_name', '$last_name', '$email', '$username', '$password');";
