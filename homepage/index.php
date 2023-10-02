@@ -55,10 +55,10 @@ include('../includes/connect.php');
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <?php
-                            $select_cat = "SELECT * FROM `category`";
+                            $select_cat = "SELECT * FROM `categories`";
                             $result_cat = mysqli_query($conn, $select_cat);
                             while ($row_data = mysqli_fetch_assoc($result_cat)) {
-                                $cat_name = $row_data['category_title'];
+                                $cat_name = $row_data['category_name'];
                                 $cat_id = $row_data['category_id'];
                                 echo "<li><a class='dropdown-item' href='index.php?category=$cat_id'>$cat_name</a></li>";
                             }
