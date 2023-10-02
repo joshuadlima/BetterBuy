@@ -90,9 +90,6 @@
             }
             ?>
         </div>
-        <!-- <div class="bg-dark text-center footer w-100">
-            <p class="text-light">All rights reserved</p>
-        </div> -->
     </div>
 
     <!-- footer -->
