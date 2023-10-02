@@ -99,132 +99,38 @@ include('../includes/connect.php');
     <div class="text-center product-container">
 
         <div class="row">
-            <div class="col-lg-3 col-md-6 mb-4" >
-                <div class="card shadow bg-white rounded" >
-                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                        <img src="https://img.freepik.com/free-photo/flowing-purple-mountain-spiral-bright-imagination-generated-by-ai_188544-9853.jpg?q=10&h=200"
-                            class="card-img-top" />
-                        <a href="#!">
-                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+            <?php
+            $select_query = "SELECT * FROM `products` ORDER BY rand() LIMIT 0, 8";
+            $result_query = mysqli_query($conn, $select_query);
+
+
+            // $row = mysqli_fetch_assoc($result_query);
+            while ($row_data = mysqli_fetch_assoc($result_query)) {
+                $product_name = $row_data['product_name'];
+                $product_price = $row_data['product_price'];
+                $product_category = $row_data['category_id'];
+                $product_image = $row_data['product_image'];
+                $product_description = $row_data['product_description'];
+
+                echo "<div class='col-lg-3 col-md-6 mb-4'>
+                <div class='card shadow bg-white rounded'>
+                    <div class='bg-image hover-zoom hover-overlay ripple' data-mdb-ripple-color='light'>
+                        <img src='../product_images/$product_image'
+                            class='w-100' />
+                        <a href='#'>
+                            <div class='mask' style='background-color: rgba(251, 251, 251, 0.15);'></div>
                         </a>
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a href="#!" class="btn btn-primary">Button</a>
+                    <div class='card-body'>
+                        <h5 class='card-title'>$product_name</h5>
+                        <p class='card-text'>$product_description</p>
+                        <a href='#' class='btn btn-primary'>ADD TO CART</a>
+                        <a href='#' class='btn btn-primary'>VIEW MORE</a>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card shadow bg-white rounded">
-                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                        <img src="https://img.freepik.com/free-photo/flowing-purple-mountain-spiral-bright-imagination-generated-by-ai_188544-9853.jpg?q=10&h=200"
-                            class="card-img-top" />
-                        <a href="#!">
-                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a href="#!" class="btn btn-primary">Button</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card shadow bg-white rounded">
-                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                        <img src="https://img.freepik.com/free-photo/flowing-purple-mountain-spiral-bright-imagination-generated-by-ai_188544-9853.jpg?q=10&h=200"
-                            class="card-img-top" />
-                        <a href="#!">
-                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a href="#!" class="btn btn-primary">Button</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card shadow bg-white rounded">
-                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                        <img src="https://img.freepik.com/free-photo/flowing-purple-mountain-spiral-bright-imagination-generated-by-ai_188544-9853.jpg?q=10&h=200"
-                            class="card-img-top" />
-                        <a href="#!">
-                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a href="#!" class="btn btn-primary">Button</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card shadow bg-white rounded">
-                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                        <img src="https://img.freepik.com/free-photo/flowing-purple-mountain-spiral-bright-imagination-generated-by-ai_188544-9853.jpg?q=10&h=200"
-                            class="card-img-top" />
-                        <a href="#!">
-                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a href="#!" class="btn btn-primary">Button</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card shadow bg-white rounded">
-                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                        <img src="https://img.freepik.com/free-photo/flowing-purple-mountain-spiral-bright-imagination-generated-by-ai_188544-9853.jpg?q=10&h=200"
-                            class="card-img-top" />
-                        <a href="#!">
-                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a href="#!" class="btn btn-primary">Button</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card shadow bg-white rounded">
-                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                        <img src="https://img.freepik.com/free-photo/flowing-purple-mountain-spiral-bright-imagination-generated-by-ai_188544-9853.jpg?q=10&h=200"
-                            class="card-img-top" />
-                        <a href="#!">
-                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a href="#!" class="btn btn-primary">Button</a>
-                    </div>
-                </div>
-            </div>
+            </div>";
+            }
+            ?>
         </div>
     </div>
 
