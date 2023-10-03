@@ -1,5 +1,6 @@
 <?php
 include('../includes/connect.php');
+include('../functions/common_functions.php');
 
 ?>
 
@@ -54,16 +55,7 @@ include('../includes/connect.php');
                             Product Categories
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <?php
-                            $select_cat = "SELECT * FROM `categories`";
-                            $result_cat = mysqli_query($conn, $select_cat);
-                            while ($row_data = mysqli_fetch_assoc($result_cat)) {
-                                $cat_name = $row_data['category_name'];
-                                $cat_id = $row_data['category_id'];
-                                echo "<li><a class='dropdown-item' href='index.php?category=$cat_id'>$cat_name</a></li>";
-                            }
-
-                            ?>
+                            <?php get_categories(); ?>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -73,64 +65,17 @@ include('../includes/connect.php');
                         <a class="nav-link" href="#">Cart</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
+                <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <button class="btn btn-secondary" type="submit" value="Search">Search</button>
                 </form>
             </div>
         </div>
     </nav>
 
-    <!-- <div class="row align-items-center">
-    <div class="col m-4">
-            <div class="card" style="width: 18rem;">
-                <img src="https://img.freepik.com/free-photo/flowing-purple-mountain-spiral-bright-imagination-generated-by-ai_188544-9853.jpg?q=10&h=200"
-                    class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
     <div class="text-center product-container">
-
         <div class="row">
-            <?php
-            $select_query = "SELECT * FROM `products` ORDER BY rand() LIMIT 0, 8";
-            $result_query = mysqli_query($conn, $select_query);
-
-
-            // $row = mysqli_fetch_assoc($result_query);
-            while ($row_data = mysqli_fetch_assoc($result_query)) {
-                $product_name = $row_data['product_name'];
-                $product_price = $row_data['product_price'];
-                $product_category = $row_data['category_id'];
-                $product_image = $row_data['product_image'];
-                $product_description = $row_data['product_description'];
-
-                echo "<div class='col-lg-3 col-md-6 mb-4'>
-                <div class='card shadow bg-white rounded'>
-                    <div class='bg-image hover-zoom hover-overlay ripple' data-mdb-ripple-color='light'>
-                        <img src='../product_images/$product_image'
-                            class='w-100' />
-                        <a href='#'>
-                            <div class='mask' style='background-color: rgba(251, 251, 251, 0.15);'></div>
-                        </a>
-                    </div>
-                    <div class='card-body'>
-                        <h5 class='card-title'>$product_name</h5>
-                        <p class='card-text'>$product_description</p>
-                        <a href='#' class='btn btn-primary'>ADD TO CART</a>
-                        <a href='#' class='btn btn-primary'>VIEW MORE</a>
-                    </div>
-                </div>
-            </div>";
-            }
-            ?>
+            <?php get_products(); ?>
         </div>
     </div>
 
@@ -139,9 +84,12 @@ include('../includes/connect.php');
 
 
     <!-- footer -->
-    <div class="p-3 text-center" style="background-color: orange;">
+    <footer class="p-3 text-center" style="background-color: orange;">
         © 1996-2023, BetterBuy.com, Inc. or its affiliates
-    </div>
+
+    </footer>
+    <!-- <div class="p-3 text-center fixed-bottom" style="background-color: orange;">
+    </div> -->
 
     <!-- bootstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
