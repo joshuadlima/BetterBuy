@@ -28,12 +28,12 @@ include('../functions/common_functions.php');
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet" />
 </head>
 
-<body style="background-color: rgb(250, 250, 187);">
+<body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg" style="background-color: orange;">
+    <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
 
-            <a class="navbar-brand mt-2 mt-sm-0 rounded" style="background-color: brown;" href="index.php">
+            <a class="navbar-brand mt-2 mt-sm-0 rounded" style="background-color: red;" href="index.php">
                 <img src="../resources/logo.png" height="50" alt="BetterBuy Logo" loading="lazy" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
@@ -91,7 +91,7 @@ include('../functions/common_functions.php');
     </div>
 
     <!-- footer -->
-    <footer class="p-3 text-center" style="background-color: orange;">
+    <footer class="p-3 text-center" style="background-color: red; color: white;">
         © 1996-2023, BetterBuy.com, Inc. or its affiliates
     </footer>
 
