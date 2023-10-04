@@ -44,7 +44,7 @@ include('../functions/common_functions.php');
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Products</a>
@@ -66,8 +66,11 @@ include('../functions/common_functions.php');
                     </li>
                 </ul>
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-secondary" type="submit" value="Search">Search</button>
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                        name="search_data" action="index.php" method="GET">
+                    <!-- <input class="btn btn-secondary" type="submit" value="Search" name="search_data_product"> -->
+                    <button class="btn btn-secondary" type="submit" value="Search"
+                        name="search_data_product">Search</button>
                 </form>
             </div>
         </div>
@@ -75,7 +78,12 @@ include('../functions/common_functions.php');
 
     <div class="text-center product-container">
         <div class="row">
-            <?php get_products(); ?>
+            <?php
+            if (isset($_GET['search_data_product']))
+                search_products();
+            else
+                get_products();
+            ?>
         </div>
     </div>
 
