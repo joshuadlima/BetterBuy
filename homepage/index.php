@@ -1,7 +1,6 @@
 <?php
 include('../includes/connect.php');
 include('../functions/common_functions.php');
-
 ?>
 
 <!doctype html>
@@ -68,7 +67,6 @@ include('../functions/common_functions.php');
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                         name="search_data" action="index.php" method="GET">
-                    <!-- <input class="btn btn-secondary" type="submit" value="Search" name="search_data_product"> -->
                     <button class="btn btn-secondary" type="submit" value="Search"
                         name="search_data_product">Search</button>
                 </form>
@@ -76,28 +74,26 @@ include('../functions/common_functions.php');
         </div>
     </nav>
 
+    <!-- carousel -->
+
+    <!-- product cards -->
     <div class="text-center product-container">
         <div class="row">
             <?php
-            if (isset($_GET['search_data_product']))
+            if (isset($_GET['search_data_product'])) // case when keyword is searched
                 search_products();
+            else if (isset($_GET['product_id'])) // case of "view more"
+                display_single_product();
             else
-                get_products();
+                get_products(); // case when nothing is clicked
             ?>
         </div>
     </div>
 
-
-
-
-
     <!-- footer -->
     <footer class="p-3 text-center" style="background-color: orange;">
         © 1996-2023, BetterBuy.com, Inc. or its affiliates
-
     </footer>
-    <!-- <div class="p-3 text-center fixed-bottom" style="background-color: orange;">
-    </div> -->
 
     <!-- bootstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

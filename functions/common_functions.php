@@ -24,7 +24,7 @@ function get_products()
                     <div class='bg-image hover-zoom hover-overlay ripple' data-mdb-ripple-color='light'>
                         <img src='../product_images/$product_image'
                             class='w-100' />
-                        <a href='#'>
+                        <a href='index.php?product_id=$product_id'>
                             <div class='mask' style='background-color: rgba(251, 251, 251, 0.15);'></div>
                         </a>
                     </div>
@@ -32,7 +32,7 @@ function get_products()
                         <h5 class='card-title'>$product_name</h5>
                         <p class='card-text'>Rs. $product_price.00</p>
                         <a href='#' class='btn btn-primary'>ADD TO CART</a>
-                        <a href='product_details.php?product_id=$product_id' class='btn btn-primary'>VIEW MORE</a>
+                        <a href='index.php?product_id=$product_id' class='btn btn-primary'>VIEW MORE</a>
                     </div>
                 </div>
             </div>";
@@ -86,7 +86,7 @@ function search_products()
                     <div class='bg-image hover-zoom hover-overlay ripple' data-mdb-ripple-color='light'>
                         <img src='../product_images/$product_image'
                             class='w-100' />
-                        <a href='#'>
+                        <a href='index.php?product_id=$product_id'>
                             <div class='mask' style='background-color: rgba(251, 251, 251, 0.15);'></div>
                         </a>
                     </div>
@@ -94,8 +94,8 @@ function search_products()
                         <h5 class='card-title'>$product_name</h5>
                         <p class='card-text'>Rs. $product_price.00</p>
                         <a href='#' class='btn btn-primary'>ADD TO CART</a>
-                        <a href='product_details.php?product_id=$product_id' class='btn btn-primary'>VIEW MORE</a>
-                    </div>
+                        <a href='index.php?product_id=$product_id' class='btn btn-primary'>VIEW MORE</a>
+                    </div>  
                 </div>
             </div>";
         }
@@ -109,5 +109,45 @@ function search_products()
           <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
         </div>";
     }
+}
+
+// function to display info of a product after "view more" is clicked
+function display_single_product()
+{
+    global $conn;
+    $product_id = $_GET['product_id'];
+    $select_query = "SELECT * FROM `products` WHERE product_id = $product_id";
+    $result_query = mysqli_query($conn, $select_query);
+
+    $row_data = mysqli_fetch_assoc($result_query);
+    $product_id = $row_data['product_id'];
+    $product_name = $row_data['product_name'];
+    $product_price = $row_data['product_price'];
+    $product_category = $row_data['category_id'];
+    $product_image = $row_data['product_image'];
+    $product_description = $row_data['product_description'];
+
+
+    // for the image
+    echo "<div class='col-lg-6 col-md-6 mb-4'>
+                <div class='card shadow bg-white rounded'>
+                    <img src='../product_images/$product_image'
+                        class='w-100' />
+                </div>
+            </div>";
+
+    // for the image info
+    echo "<div class='col-lg-6 col-md-6 mb-4'>
+    <div class='card shadow bg-white rounded'>
+        <div class='card-body'>
+            <h5 class='card-title'>$product_name</h5>
+            <p class='card-text'>Description: $product_description</p>
+            <p class='card-text'>Rs. $product_price.00</p>
+            <a href='#' class='btn btn-primary'>ADD TO CART</a>
+        </div>  
+    </div>
+</div>";
+
+
 }
 ?>
