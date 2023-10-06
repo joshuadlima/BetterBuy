@@ -20,7 +20,7 @@ if(isset($_POST['insert_product']))
         exit();
     }
     else{
-    move_uploaded_file($temp_image,"./product_images/$product_image");
+    move_uploaded_file($temp_image,"../product_images/$product_image");
     //insert query
     $insert_products="insert into products (product_name,product_description,category_id,product_image,product_price) values ('$product_name','$product_description','$product_category','$product_image','$product_price')";
     $result_query=mysqli_query($conn,$insert_products);
