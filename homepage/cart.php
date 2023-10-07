@@ -76,20 +76,20 @@ include('../functions/common_functions.php');
     <div class="container">
         <div class="row">
             <table class="table table-bordered text-center">
-                
 
-                    <!-- php code to display dynamic data -->
-                    <?php
-                    $get_ip_add = getIPAddress();
-                    $total_price = 0;
-                    $cart_query = "select * from cart_details where ip_address='$get_ip_add'";
-                    $result = mysqli_query($conn, $cart_query);
-                    $result_count = mysqli_num_rows($result);
-                    if ($result_count == 0) {
-                        // if there are no items if the cart then....
-                        echo "<h2 class='text-center text-danger'>Cart is empty</h2>";
-                    } else {
-                        echo "
+
+                <!-- php code to display dynamic data -->
+                <?php
+                $get_ip_add = getIPAddress();
+                $total_price = 0;
+                $cart_query = "select * from cart_details where ip_address='$get_ip_add'";
+                $result = mysqli_query($conn, $cart_query);
+                $result_count = mysqli_num_rows($result);
+                if ($result_count == 0) {
+                    // if there are no items if the cart then....
+                    echo "<h2 class='text-center text-danger'>Cart is empty</h2>";
+                } else {
+                    echo "
                         <thead>
                         <tr>
                             <th>Product Title</th>
@@ -101,19 +101,19 @@ include('../functions/common_functions.php');
                         </tr>
                     </thead>
                     <tbody> ";
-                        while ($row = mysqli_fetch_array($result)) {
-                            $product_id = $row['product_id'];
-                            $select_products = "select * from products where product_id='$product_id'";
-                            $result_products = mysqli_query($conn, $select_products);
-                            while ($row_product_price = mysqli_fetch_array($result_products)) {
-                                $product_price = array($row_product_price['product_price']);
-                                $price_table = $row_product_price['product_price'];
-                                $product_name = $row_product_price['product_name'];
-                                $product_image = $row_product_price['product_image'];
-                                $product_values = array_sum($product_price);
-                                $total_price += $product_values;
-                    ?>
-                                <form method="post">
+                    while ($row = mysqli_fetch_array($result)) {
+                        $product_id = $row['product_id'];
+                        $select_products = "select * from products where product_id='$product_id'";
+                        $result_products = mysqli_query($conn, $select_products);
+                        while ($row_product_price = mysqli_fetch_array($result_products)) {
+                            $product_price = array($row_product_price['product_price']);
+                            $price_table = $row_product_price['product_price'];
+                            $product_name = $row_product_price['product_name'];
+                            $product_image = $row_product_price['product_image'];
+                            $product_values = array_sum($product_price);
+                            $total_price += $product_values;
+                ?>
+                            <form method="post">
                                 <tr>
                                     <td>
                                         <?php echo $product_name ?>
@@ -127,8 +127,8 @@ include('../functions/common_functions.php');
                                     if (isset($_POST['update_cart'])) {
                                         $product_id = $row_product_price['product_id'];
                                         $quantities = $_POST['qty'];
-                                        $get_ip_add=getIPAddress();
-                                        $update_cart = "UPDATE cart_details SET quantity=$quantities WHERE ip_address='$get_ip_add';";
+                                        $get_ip_add = getIPAddress();
+                                        $update_cart = "UPDATE cart_details SET quantity=$quantities WHERE ip_address='$get_ip_add'";
                                         $result_product_quantity = mysqli_query($conn, $update_cart);
                                         $total_price = $total_price * $quantities;
                                     }
@@ -143,13 +143,15 @@ include('../functions/common_functions.php');
                                         <!-- <button class="bg-info px-3 py-2 border-0 mx-3">Remove</button> -->
                                     </td>
                                 </tr>
-                                </form>";
-                              
-                    <?php
-                     
-                    }}} 
-                    ?>
-                    </tbody>
+                            </form>
+
+                <?php
+
+                        }
+                    }
+                }
+                ?>
+                </tbody>
 
             </table>
             <!-- subtotal -->
@@ -158,8 +160,7 @@ include('../functions/common_functions.php');
                 <input type="submit" class="bg-info px-3 py-2 border-0 mx-3" value="Continue Shopping" name="continue_shop">
                 <!-- Redirecting to homepage using 'continue shopping' button -->
                 <?php
-                if (isset($_POST['continue_shop']))
-                {
+                if (isset($_POST['continue_shop'])) {
                     echo "<script>window.open('index.php','_self')</script>";
                 }
                 ?>
@@ -167,7 +168,7 @@ include('../functions/common_functions.php');
             </div>
         </div>
     </div>
-  
+
     <!-- function to remove items from cart -->
     <?php
     function remove_cart_item()
