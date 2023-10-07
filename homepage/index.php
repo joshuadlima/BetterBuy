@@ -1,6 +1,9 @@
 <?php
 include('../includes/connect.php');
 include('../functions/common_functions.php');
+//$ip = getIPAddress();  
+//echo 'User Real IP Address - '.$ip;  
+
 ?>
 
 <!doctype html>
@@ -61,7 +64,14 @@ include('../functions/common_functions.php');
                         <a class="nav-link" href="#">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Cart</a>
+                        <a class="nav-link" href="cart.php">Cart <sup>
+                                <?php cart_item() ?>
+                            </sup></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Total Price:
+                            <?php total_cart_price() ?>
+                        </a>
                     </li>
                 </ul>
                 <form class="d-flex">
@@ -73,7 +83,10 @@ include('../functions/common_functions.php');
             </div>
         </div>
     </nav>
-
+    <!-- Calling cart function  -->
+    <?php
+    cart();
+    ?>
     <!-- carousel -->
 
     <!-- product cards -->
@@ -105,6 +118,7 @@ include('../functions/common_functions.php');
 
     <!-- material bootstrap js -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+
 </body>
 
 </html>
