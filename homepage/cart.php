@@ -155,6 +155,7 @@ include('../functions/common_functions.php');
 
             </table>
             <!-- subtotal -->
+            <form method="post">
             <div class="d-flex mb-3">
                 <h4 class="px-3">Subtotal:<strong><?php echo $total_price ?>/-</strong></h4>
                 <input type="submit" class="bg-info px-3 py-2 border-0 mx-3" value="Continue Shopping" name="continue_shop">
@@ -166,6 +167,7 @@ include('../functions/common_functions.php');
                 ?>
                 <a href="#"><button class="bg-secondary px-3 py-2 border-0">Checkout</button></a>
             </div>
+            </form>
         </div>
     </div>
 
