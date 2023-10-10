@@ -34,7 +34,7 @@ include('../includes/connect.php');
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
 
-            <a class="navbar-brand mt-2 mt-sm-0 rounded" style="background-color: red;" href="index.php">
+            <a class="navbar-brand mt-2 mt-sm-0 rounded" style="background-color: red;" href="../homepage/index.php">
                 <img src="../resources/logo.png" height="50" alt="BetterBuy Logo" loading="lazy" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
