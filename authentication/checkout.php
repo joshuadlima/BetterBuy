@@ -1,5 +1,6 @@
 <?php
 include('../includes/connect.php');
+session_start();
 // include('../functions/common_functions.php');
 
 ?>
@@ -55,10 +56,11 @@ include('../includes/connect.php');
         <div class="col-md-12">
             <div class="row">
                 <?php
-                if (!isset($_SESSION['username']))
+                if (!isset($_SESSION['username'])) {
                     include('user_login.php');
-                else
+                } else {
                     include('../homepage/payment.php');
+                }
                 ?>
             </div>
         </div>

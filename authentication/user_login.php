@@ -1,6 +1,7 @@
 <?php
 include('../includes/connect.php');
 include('../functions/common_functions.php');
+session_start();
 
 if (isset($_POST['user_login'])) {
     // get user details from form
@@ -21,7 +22,6 @@ if (isset($_POST['user_login'])) {
             echo "<script>alert('entered password is incorrect')</script>";
         } else {
             // save username for future reference
-            session_start();
             $_SESSION['username'] = $username;
             header('Location: ../homepage/index.php');
         }
