@@ -44,7 +44,7 @@ include('../includes/connect.php');
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                     <li class="nav-item">
-                        <a class="nav-link" href="../homepage/index.php">Home</a>
+                        <a class="nav-link" href="../homepage/index.php">HOME</a>
                     </li>
                 </ul>
             </div>
@@ -55,11 +55,10 @@ include('../includes/connect.php');
         <div class="col-md-12">
             <div class="row">
                 <?php
-                if (!isset($_SESSION['username'])) {
+                if (!isset($_SESSION['username']))
                     include('user_login.php');
-                } else {
-                    include('payment.php');
-                }
+                else
+                    include('../homepage/payment.php');
                 ?>
             </div>
         </div>

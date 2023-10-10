@@ -58,25 +58,26 @@ function computeTotalPrice()
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php">Home</a>
+                        <a class="nav-link" href="index.php">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Products</a>
+                        <a class="nav-link" href="#">PRODUCTS</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Product Categories
+                            PRODUCT CATEGORIES
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <?php get_categories(); ?>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="#">ABOUT</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="cart.php">Cart <sup>
+                        <a class="nav-link" href="cart.php">CART <i class="fa-solid fa-cart-shopping"></i>
+                            <sup>
                                 <?php cart_item() ?>
                             </sup></a>
                     </li>

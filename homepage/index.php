@@ -76,12 +76,19 @@ session_start();
                         </span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="logout.php">
-                            <?php
-                            if (isset($_SESSION['username']))
-                                echo "LOGOUT";
+
+                        <?php
+                        if (isset($_SESSION['username'])) {
                             ?>
-                        </a>
+                            <a class="nav-link" href="logout.php">LOGOUT</a>
+                            <?php
+                        } else {
+                            ?>
+                            <a class="nav-link" href="../authentication/user_login.php">LOGIN</a>
+                            <?php
+                        }
+                        ?>
+
                     </li>
                 </ul>
                 <form class="d-flex">
