@@ -1,6 +1,7 @@
 <?php
 include('../includes/connect.php');
 include('../functions/common_functions.php');
+session_start();
 //$ip = getIPAddress();  
 //echo 'User Real IP Address - '.$ip;  
 
@@ -83,11 +84,71 @@ include('../functions/common_functions.php');
             </div>
         </div>
     </nav>
+
     <!-- Calling cart function  -->
-    <?php
-    cart();
-    ?>
+    <?php cart(); ?>
+
     <!-- carousel -->
+
+
+    <?php if (!isset($_GET['search_data_product']) and !isset($_GET['product_id']) and !isset($_GET['category'])) {
+        ?>
+
+        <div id="carouselExampleCaptions" class="carousel p-3 slide carousel-fade" data-mdb-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-mdb-target="#carouselExampleCaptions" data-mdb-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-mdb-target="#carouselExampleCaptions" data-mdb-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-mdb-target="#carouselExampleCaptions" data-mdb-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner rounded-4">
+                <div class="carousel-item active">
+                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%282%29.jpg"
+                        class="d-block w-100" alt="Wild Landscape" />
+                    <div class="mask" style="background-color: rgba(0, 0, 0, 0.4)"></div>
+                    <div class="carousel-caption d-none d-sm-block mb-5" style="font-size:50px; opacity:0.8;">
+                        <strong>HEY
+                            <?php
+                            if (isset($_SESSION['username']))
+                                echo $_SESSION['username'];
+                            else
+                                echo "GUEST";
+                            ?>!!
+                        </strong>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%283%29.jpg"
+                        class="d-block w-100" alt="Camera" />
+                    <div class="mask" style="background-color: rgba(0, 0, 0, 0.4)"></div>
+                    <!-- <div class="carousel-caption d-none d-md-block mb-5">
+                </div> -->
+                </div>
+                <div class="carousel-item">
+                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%285%29.jpg"
+                        class="d-block w-100" alt="Exotic Fruits" />
+                    <div class="mask" style="background-color: rgba(0, 0, 0, 0.4)"></div>
+                    <!-- <div class="carousel-caption d-none d-md-block mb-5">
+                </div> -->
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleCaptions"
+                data-mdb-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleCaptions"
+                data-mdb-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <?php
+    }
+    ?>
 
     <!-- product cards -->
     <div class="text-center product-container">
@@ -117,8 +178,12 @@ include('../functions/common_functions.php');
         crossorigin="anonymous"></script>
 
     <!-- material bootstrap js -->
+    <script>
+        $('.carousel').carousel({
+            interval: 2000;
+        })
+    </script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
-
 </body>
 
 </html>

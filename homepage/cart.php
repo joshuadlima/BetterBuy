@@ -3,7 +3,19 @@ include('../includes/connect.php');
 include('../functions/common_functions.php');
 //$ip = getIPAddress();  
 //echo 'User Real IP Address - '.$ip;  
-
+function computeTotalPrice()
+{
+    global $conn;
+    $total_price = 0;
+    $select_query = "SELECT quantity,product_price FROM cart_details,products WHERE cart_details.product_id=products.product_id";
+    $result_query = mysqli_query($conn, $select_query);
+    while ($row_data = mysqli_fetch_assoc($result_query)) {
+        $product_price = $row_data['product_price'];
+        $product_quantity = $row_data['quantity'];
+        $total_price += ($product_price * $product_quantity);
+    }
+    echo $total_price;
+}
 ?>
 
 <!doctype html>
@@ -137,7 +149,9 @@ include('../functions/common_functions.php');
                                 $get_ip_add = getIPAddress();
                                 $update_cart = "UPDATE cart_details SET quantity=$quantities WHERE ip_address='$get_ip_add' AND product_id=$product_id";
                                 $result_product_quantity = mysqli_query($conn, $update_cart);
-                                $total_price = $total_price * $quantities;
+                                //$total_price = $total_price * $quantities;
+                                //$total_price=computeTotalPrice();
+                                //compute_total();
                             }
 
                             ?>
@@ -158,8 +172,6 @@ include('../functions/common_functions.php');
                             </td>
                             </tr>
                             </form>";
-
-
                         }
                     }
                 }
@@ -167,6 +179,26 @@ include('../functions/common_functions.php');
                 </tbody>
             </table>
             <!-- subtotal -->
+            <form method="post">
+                <div class="d-flex mb-3">
+                    <h4 class="px-3">Subtotal:<strong>
+                            <?php computeTotalPrice(); ?>/-
+                        </strong></h4>
+                    <input type="submit" class="bg-info px-3 py-2 border-0 mx-3" value="Continue Shopping"
+                        name="continue_shop">
+                    <!-- Redirecting to homepage using 'continue shopping' button -->
+                    <?php
+                    if (isset($_POST['continue_shop'])) {
+                        echo "<script>window.open('index.php','_self')</script>";
+                    }
+                    ?>
+                    <!-- <a> -->
+                    <button class="bg-secondary px-3 py-2 border-0">
+                        <a href="../authentication/checkout.php" style="color: black;">Checkout</a>
+                    </button>
+                    <!-- </a> -->
+                </div>
+            </form>
 
         </div>
     </div>
@@ -176,8 +208,8 @@ include('../functions/common_functions.php');
     function remove_cart_item()
     {
         global $conn;
-        if (isset($_POST['remove_cart'])) {
-            foreach ($_POST['removeitem'] as $remove_id) {
+        if (isset($_GET['remove_cart'])) {
+            foreach ($_GET['removeitem'] as $remove_id) {
                 echo $remove_id;
                 $delete_query = "delete from cart_details where product_id='$remove_id'";
                 $run_delete = mysqli_query($conn, $delete_query);
