@@ -6,13 +6,13 @@ include('../functions/common_functions.php');
 function computeTotalPrice()
 {
     global $conn;
-    $total_price=0;
+    $total_price = 0;
     $select_query = "SELECT quantity,product_price FROM cart_details,products WHERE cart_details.product_id=products.product_id";
     $result_query = mysqli_query($conn, $select_query);
     while ($row_data = mysqli_fetch_assoc($result_query)) {
         $product_price = $row_data['product_price'];
         $product_quantity = $row_data['quantity'];
-        $total_price+=($product_price*$product_quantity);
+        $total_price += ($product_price * $product_quantity);
     }
     echo $total_price;
 }
@@ -27,7 +27,8 @@ function computeTotalPrice()
     <title>Cart details</title>
 
     <!-- bootstrap css -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <!-- normal css -->
     <link rel="stylesheet" href="homepage.css">
@@ -50,7 +51,8 @@ function computeTotalPrice()
             <a class="navbar-brand mt-2 mt-sm-0 rounded" style="background-color: red;" href="index.php">
                 <img src="../resources/logo.png" height="50" alt="BetterBuy Logo" loading="lazy" />
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarScroll">
@@ -62,7 +64,8 @@ function computeTotalPrice()
                         <a class="nav-link" href="#">Products</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             Product Categories
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -117,6 +120,7 @@ function computeTotalPrice()
                     <tbody> ";
                     while ($row = mysqli_fetch_array($result)) {
                         $product_id = $row['product_id'];
+                        $quantities= $row['quantity'];
                         $select_products = "select * from products where product_id='$product_id'";
                         $result_products = mysqli_query($conn, $select_products);
                         while ($row_product_price = mysqli_fetch_array($result_products)) {
@@ -126,7 +130,6 @@ function computeTotalPrice()
                             $product_image = $row_product_price['product_image'];
                             $product_values = array_sum($product_price);
                             $total_price += $product_values;
-
                             echo "<form method='get' action='cart.php?pr_id=$product_id&'>
                                 <tr>
                                     <td>
@@ -136,8 +139,8 @@ function computeTotalPrice()
                                         <img src='../product_images/$product_image' height='200px'
                                             class='cart_image'>
                                     </td>
-                                    <td><input type='text' class='form-control w-50' name='qty'></td>";
-                ?>
+                                    <td><input type='text' class='form-control w-50' name='qty' value='$quantities' ></td>";
+                            ?>
 
                             <?php
                             if (isset($_GET['update_cart']) and $_GET['update_cart'] == $product_id) {
@@ -146,6 +149,8 @@ function computeTotalPrice()
                                 $get_ip_add = getIPAddress();
                                 $update_cart = "UPDATE cart_details SET quantity=$quantities WHERE ip_address='$get_ip_add' AND product_id=$product_id";
                                 $result_product_quantity = mysqli_query($conn, $update_cart);
+                                echo "<script>window.open('cart.php','_self');</script>";
+
                                 //$total_price = $total_price * $quantities;
                                 //$total_price=computeTotalPrice();
                                 //compute_total();
@@ -153,7 +158,7 @@ function computeTotalPrice()
 
                             ?>
 
-                <?php
+                            <?php
 
                             echo "
                             <td>
@@ -178,15 +183,22 @@ function computeTotalPrice()
             <!-- subtotal -->
             <form method="post">
                 <div class="d-flex mb-3">
-                    <h4 class="px-3">Subtotal:<strong><?php computeTotalPrice();?>/-</strong></h4>
-                    <input type="submit" class="bg-info px-3 py-2 border-0 mx-3" value="Continue Shopping" name="continue_shop">
+                    <h4 class="px-3">Subtotal:<strong>
+                            <?php computeTotalPrice(); ?>/-
+                        </strong></h4>
+                    <input type="submit" class="bg-info px-3 py-2 border-0 mx-3" value="Continue Shopping"
+                        name="continue_shop">
                     <!-- Redirecting to homepage using 'continue shopping' button -->
                     <?php
                     if (isset($_POST['continue_shop'])) {
                         echo "<script>window.open('index.php','_self')</script>";
                     }
                     ?>
-                    <a href="#"><button class="bg-secondary px-3 py-2 border-0">Checkout</button></a>
+                    <!-- <a> -->
+                    <button class="bg-secondary px-3 py-2 border-0">
+                        <a href="../authentication/checkout.php" style="color: black;">Checkout</a>
+                    </button>
+                    <!-- </a> -->
                 </div>
             </form>
 
@@ -219,8 +231,12 @@ function computeTotalPrice()
     </footer>
 
     <!-- bootstrap js -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
 
     <!-- material bootstrap js -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>

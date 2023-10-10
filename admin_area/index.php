@@ -1,3 +1,7 @@
+<?php
+include('../includes/connect.php');
+include('../functions/common_functions.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,11 +60,11 @@
                 <div class="button text-center">
                     <button class="btn btn-light" style="margin:10px"><a href="index.php?insert_products"
                             class="nav-link text-dark border-1">Insert Products</a></button>
-                    <button class="btn btn-light" style="margin:10px"><a href="" class="nav-link text-dark">View
+                    <button class="btn btn-light" style="margin:10px"><a href="index.php?view_products" class="nav-link text-dark">View
                             products</a></button>
                     <button class="btn btn-light" style="margin:10px"><a href="index.php?insert_category"
                             class="nav-link text-dark">Insert Categories</a></button>
-                    <button class="btn btn-light" style="margin:10px"><a href="" class="nav-link text-dark">View
+                    <button class="btn btn-light" style="margin:10px"><a href="index.php?view_categories" class="nav-link text-dark">View
                             Categories</a></button>
                     <button class="btn btn-light" style="margin:10px"><a href="" class="nav-link text-dark">Insert
                             Brands</a></button>
@@ -70,7 +74,7 @@
                             orders</a></button>
                     <button class="btn btn-light" style="margin:10px"><a href="" class="nav-link text-dark">All
                             payments</a></button>
-                    <button class="btn btn-light" style="margin:10px"><a href="" class="nav-link text-dark">List
+                    <button class="btn btn-light" style="margin:10px"><a href="index.php?list_users" class="nav-link text-dark">List
                             users</a></button>
                     <button class="btn btn-light" style="margin:10px"><a href=""
                             class="nav-link text-dark">Logout</a></button>
@@ -87,6 +91,21 @@
             <?php
             if (isset($_GET['insert_products'])) {
                 include('insert_products.php');
+            }
+            if (isset($_GET['view_products'])) {
+                include('view_products.php');
+            }
+            if (isset($_GET['delete_products'])) {
+                include('delete_products.php');
+            }
+            if (isset($_GET['view_categories'])) {
+                include('view_categories.php');
+            }
+            if (isset($_GET['delete_category'])) {
+                include('delete_category.php');
+            }
+            if (isset($_GET['list_users'])) {
+                include('list_users.php');
             }
             ?>
         </div>
