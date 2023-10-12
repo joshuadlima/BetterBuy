@@ -1,0 +1,14 @@
+.requirement-list li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  align-items: center;
+}
+.valid{
+    color:green;
+}
+.requirement-list li i{
+    font-size: 0.6rem;
+    color:#aaa;
+    width: 20px;
+}

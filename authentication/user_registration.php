@@ -96,7 +96,9 @@ if (isset($_POST['user_register'])) {
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <!-- normal css -->
-
+    <link rel="stylesheet" href="style.css">
+    <!-- password validation js -->
+    <script src="validation.js" defer></script>
     <!-- material bootstrap -->
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
@@ -158,7 +160,7 @@ if (isset($_POST['user_register'])) {
 
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
+                                            <div class="form-outline flex-fill mb-0 pass-field1">
                                                 <input type="password" id="user_password" name="user_password"
                                                     class="form-control" />
                                                 <label class="form-label" for="user_password">Password</label>
@@ -167,7 +169,7 @@ if (isset($_POST['user_register'])) {
 
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
+                                            <div class="form-outline flex-fill mb-0 x pass-field2">
                                                 <input type="password" id="conf_user_password" name="conf_user_password"
                                                     class="form-control" />
                                                 <label class="form-label" for="conf_user_password">Repeat your
@@ -190,8 +192,8 @@ if (isset($_POST['user_register'])) {
                                         </div>
 
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                            <input type="submit" value="Register" class="btn btn-primary btn-lg"
-                                                name="user_register">
+                                            <input type="submit" value="Register" class="btn btn-primary btn-lg" id="submitbutton"
+                                                name="user_register" >
                                             <!-- <button type="button" class="btn btn-primary btn-lg">Register</button> -->
                                         </div>
 
@@ -201,26 +203,37 @@ if (isset($_POST['user_register'])) {
 
                                 </div>
 
-                                <!-- <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-                                    <div id="password-message">
-                                        <h3>Password must contain:</h3>
-                                        <p class="password-message-item invalid">At least
-                                            <b>one lowercase letter</b>
-                                        </p>
-                                        <p class="password-message-item invalid">At least
-                                            <b>one uppercase letter</b>
-                                        </p>
-                                        <p class="password-message-item invalid">At least
-                                            <b>one number</b>
-                                        </p>
-                                        <p class="password-message-item invalid">Minimum
-                                            <b>8 characters</b>
-                                        </p>
-                                        <p class="password-message-item invalid">Passwords
-                                            <b>match</b>
-                                        </p>
-                                    </div>
-                                </div> -->
+                                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1 align-self-center justify-content-center">
+                                <div class="content">
+                                    <p>Password must contains</p>
+                                    <ul class="requirement-list">
+                                        <li>
+                                            <i class="fa-solid fa-circle"></i>
+                                            <span>At least 8 characters length</span>
+                                        </li>
+                                        <li>
+                                            <i class="fa-solid fa-circle"></i>
+                                            <span>At least 1 number (0...9)</span>
+                                        </li>
+                                        <li>
+                                            <i class="fa-solid fa-circle"></i>
+                                            <span>At least 1 lowercase letter (a...z)</span>
+                                        </li>
+                                        <li>
+                                            <i class="fa-solid fa-circle"></i>
+                                            <span>At least 1 special symbol (!...$)</span>
+                                        </li>
+                                        <li>
+                                            <i class="fa-solid fa-circle"></i>
+                                            <span>At least 1 uppercase letter (A...Z)</span>
+                                        </li>
+                                        <li>
+                                            <i class="fa-solid fa-circle"></i>
+                                            <span>Password match</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                </div> 
                             </div>
                         </div>
                     </div>
