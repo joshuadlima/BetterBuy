@@ -2,26 +2,26 @@
 include('../includes/connect.php');
 include('../functions/common_functions.php');
 
-if (isset($_POST['user_auth'])) {
+if (isset($_POST['admin_auth'])) {
 
     session_start();
-    $user_username = $_SESSION['user_username'];
-    $user_address = $_SESSION['user_address'];
-    $user_phone = $_SESSION['user_phone'];
-    $user_email = $_SESSION['user_email'];
-    $user_password = $_SESSION['user_password'];
-    $user_ip = $_SESSION['user_ip'];
+    $admin_username = $_SESSION['admin_username'];
+    $admin_address = $_SESSION['admin_address'];
+    $admin_phone = $_SESSION['admin_phone'];
+    $admin_email = $_SESSION['admin_email'];
+    $admin_password = $_SESSION['admin_password'];
+    $admin_ip = $_SESSION['admin_ip'];
     $otp = $_SESSION['otp'];
 
 
-    $getotp = $_POST['user_otp'];
+    $getotp = $_POST['admin_otp'];
 
     if ($otp == $getotp) {
-        // enter user details into the database
-        $insert_query = "INSERT INTO `user_table` (`username`, `user_email`, `user_password`, `user_ip`, `user_address`, `user_mobile`) VALUES ('$user_username', '$user_email', '$user_password', '$user_ip', '$user_address', '$user_phone');";
+        // enter admin details into the database
+        $insert_query = "INSERT INTO `admin_table` (`admin_username`, `admin_email`, `admin_password`, `admin_mobile`,`admin_ip`) VALUES ('$admin_username', '$admin_email', '$admin_password', '$admin_mobile', '$admin_ip');";
         $result = mysqli_query($conn, $insert_query);
 
-        header('Location: ../homepage/index.php');
+        header('Location: index.php');
 
     } else {
         echo "<script>alert('wrong otp entered!!')</script>";
@@ -42,7 +42,7 @@ if (isset($_POST['user_auth'])) {
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <!-- normal css -->
-    <!-- <link rel="stylesheet" href="homepage.css"> -->
+    <link rel="stylesheet" href="homepage.css">
 
 
     <!-- material bootstrap -->
@@ -70,15 +70,15 @@ if (isset($_POST['user_auth'])) {
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="password" id="user_otp" name="user_otp"
+                                                <input type="password" id="admin_otp" name="admin_otp"
                                                     class="form-control" />
-                                                <label class="form-label" for="user_top">OTP</label>
+                                                <label class="form-label" for="admin_top">OTP</label>
                                             </div>
                                         </div>
 
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                             <input type="submit" value="Submit" class="btn btn-primary btn-lg"
-                                                name="user_auth">
+                                                name="admin_auth">
                                         </div>
                                     </form>
 

@@ -1,6 +1,5 @@
 <?php
 include('../includes/connect.php');
-session_start();
 // include('../functions/common_functions.php');
 
 ?>
@@ -59,7 +58,7 @@ session_start();
                 if (!isset($_SESSION['username'])) {
                     include('user_login.php');
                 } else {
-                    include('../homepage/payment.php');
+                    include('payment.php');
                 }
                 ?>
             </div>

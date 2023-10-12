@@ -13,26 +13,26 @@ require 'PHPMailer\PHPMailer.php';
 include('../includes/connect.php');
 include('../functions/common_functions.php');
 
-// check if user already exists
-if (isset($_POST['user_register'])) {
+// check if admin already exists
+if (isset($_POST['admin_register'])) {
 
-    // get user details from form
-    $user_username = $_POST['user_username'];
-    $user_address = $_POST['user_address'];
-    $user_phone = $_POST['user_phone'];
-    $user_email = $_POST['user_email'];
-    $user_password = $_POST['user_password'];
-    $user_ip = getIPAddress();
+    // get admin details from form
+    $admin_username = $_POST['admin_username'];
+    $admin_address = $_POST['admin_address'];
+    $admin_phone = $_POST['admin_phone'];
+    $admin_email = $_POST['admin_email'];
+    $admin_password = $_POST['admin_password'];
+    $admin_ip = getIPAddress();
 
     session_start();
-    $_SESSION['user_username'] = $user_username;
-    $_SESSION['user_address'] = $user_address;
-    $_SESSION['user_phone'] = $user_phone;
-    $_SESSION['user_email'] = $user_email;
-    $_SESSION['user_password'] = hash('md5', $user_password);
-    $_SESSION['user_ip'] = $user_ip;
+    $_SESSION['admin_username'] = $admin_username;
+    $_SESSION['admin_address'] = $admin_address;
+    $_SESSION['admin_phone'] = $admin_phone;
+    $_SESSION['admin_email'] = $admin_email;
+    $_SESSION['admin_password'] = hash('md5', $admin_password);
+    $_SESSION['admin_ip'] = $admin_ip;
 
-    $sql = "SELECT * FROM user_table WHERE username='$user_username'; ";
+    $sql = "SELECT * FROM admin_table WHERE admin_username='$admin_username'; ";
     $result = mysqli_query($conn, $sql);
 
 
@@ -59,7 +59,7 @@ if (isset($_POST['user_register'])) {
 
             //Recipients
             $mail->setFrom('anon.xaea12@gmail.com', 'BetterBuy');
-            $mail->addAddress($user_email, $user_username); //Add a recipient
+            $mail->addAddress($admin_email, $user_adminname); //Add a recipient
 
             //Content
             $mail->isHTML(true); //Set email format to HTML
@@ -75,7 +75,7 @@ if (isset($_POST['user_register'])) {
 
 
         // redirect browser
-        header('Location: user_registration_auth.php');
+        header('Location: admin_registration_auth.php');
 
     } else {
         echo "<script>alert('username already exists :(')</script>";
@@ -96,9 +96,7 @@ if (isset($_POST['user_register'])) {
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <!-- normal css -->
-    <link rel="stylesheet" href="style.css">
-    <!-- password validation js -->
-    <script src="validation.js" defer></script>
+
     <!-- material bootstrap -->
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
@@ -125,54 +123,54 @@ if (isset($_POST['user_register'])) {
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="text" id="user_username" name="user_username"
+                                                <input type="text" id="admin_username" name="admin_username"
                                                     class="form-control" required="required" />
-                                                <label class="form-label" for="user_username">Your Username</label>
+                                                <label class="form-label" for="admin_username">Your Username</label>
                                             </div>
                                         </div>
 
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-location-dot fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="text" id="user_address" name="user_address"
+                                                <input type="text" id="admin_address" name="user_address"
                                                     class="form-control" />
-                                                <label class="form-label" for="user_address">Your Address</label>
+                                                <label class="form-label" for="admin_address">Your Address</label>
                                             </div>
                                         </div>
 
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-phone fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="tel" id="user_phone" name="user_phone"
+                                                <input type="tel" id="admin_phone" name="admin_phone"
                                                     class="form-control" />
-                                                <label class="form-label" for="user_phone">Your Phone Number</label>
+                                                <label class="form-label" for="admin_phone">Your Phone Number</label>
                                             </div>
                                         </div>
 
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="email" id="user_email" name="user_email"
+                                                <input type="email" id="admin_email" name="admin_email"
                                                     class="form-control" />
-                                                <label class="form-label" for="user_email">Your Email</label>
+                                                <label class="form-label" for="admin_email">Your Email</label>
                                             </div>
                                         </div>
 
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0 pass-field1">
-                                                <input type="password" id="user_password" name="user_password"
+                                            <div class="form-outline flex-fill mb-0">
+                                                <input type="password" id="admin_password" name="admin_password"
                                                     class="form-control" />
-                                                <label class="form-label" for="user_password">Password</label>
+                                                <label class="form-label" for="admin_password">Password</label>
                                             </div>
                                         </div>
 
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0 x pass-field2">
-                                                <input type="password" id="conf_user_password" name="conf_user_password"
+                                            <div class="form-outline flex-fill mb-0">
+                                                <input type="password" id="conf_admin_password" name="conf_admin_password"
                                                     class="form-control" />
-                                                <label class="form-label" for="conf_user_password">Repeat your
+                                                <label class="form-label" for="conf_admin_password">Repeat your
                                                     password</label>
                                             </div>
                                         </div>
@@ -187,13 +185,13 @@ if (isset($_POST['user_register'])) {
 
                                         <div class="d-flex justify-content-center mb-2">
                                             <strong class="small">
-                                                <a href="user_login.php">Already have an account? Login!</a>
+                                                <a href="admin_login.php">Already have an account? Login!</a>
                                             </strong>
                                         </div>
 
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                            <input type="submit" value="Register" class="btn btn-primary btn-lg" id="submitbutton"
-                                                name="user_register" >
+                                            <input type="submit" value="Register" class="btn btn-primary btn-lg"
+                                                name="admin_register">
                                             <!-- <button type="button" class="btn btn-primary btn-lg">Register</button> -->
                                         </div>
 
@@ -203,37 +201,26 @@ if (isset($_POST['user_register'])) {
 
                                 </div>
 
-                                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1 align-self-center justify-content-center">
-                                <div class="content">
-                                    <p>Password must contains</p>
-                                    <ul class="requirement-list">
-                                        <li>
-                                            <i class="fa-solid fa-circle"></i>
-                                            <span>At least 8 characters length</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-circle"></i>
-                                            <span>At least 1 number (0...9)</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-circle"></i>
-                                            <span>At least 1 lowercase letter (a...z)</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-circle"></i>
-                                            <span>At least 1 special symbol (!...$)</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-circle"></i>
-                                            <span>At least 1 uppercase letter (A...Z)</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-circle"></i>
-                                            <span>Password match</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                </div> 
+                                <!-- <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                                    <div id="password-message">
+                                        <h3>Password must contain:</h3>
+                                        <p class="password-message-item invalid">At least
+                                            <b>one lowercase letter</b>
+                                        </p>
+                                        <p class="password-message-item invalid">At least
+                                            <b>one uppercase letter</b>
+                                        </p>
+                                        <p class="password-message-item invalid">At least
+                                            <b>one number</b>
+                                        </p>
+                                        <p class="password-message-item invalid">Minimum
+                                            <b>8 characters</b>
+                                        </p>
+                                        <p class="password-message-item invalid">Passwords
+                                            <b>match</b>
+                                        </p>
+                                    </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

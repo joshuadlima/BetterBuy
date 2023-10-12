@@ -45,6 +45,8 @@ function computeTotalPrice()
 
 <body>
     <!-- navbar -->
+
+    <!-- navbar -->
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
 
@@ -86,6 +88,7 @@ function computeTotalPrice()
             </div>
         </div>
     </nav>
+
     <!-- Calling cart function  -->
     <?php
     cart();
@@ -121,6 +124,7 @@ function computeTotalPrice()
                     <tbody> ";
                     while ($row = mysqli_fetch_array($result)) {
                         $product_id = $row['product_id'];
+                        $quantities = $row['quantity'];
                         $select_products = "select * from products where product_id='$product_id'";
                         $result_products = mysqli_query($conn, $select_products);
                         while ($row_product_price = mysqli_fetch_array($result_products)) {
@@ -130,7 +134,6 @@ function computeTotalPrice()
                             $product_image = $row_product_price['product_image'];
                             $product_values = array_sum($product_price);
                             $total_price += $product_values;
-
                             echo "<form method='get' action='cart.php?pr_id=$product_id&'>
                                 <tr>
                                     <td>
@@ -140,7 +143,7 @@ function computeTotalPrice()
                                         <img src='../product_images/$product_image' height='200px'
                                             class='cart_image'>
                                     </td>
-                                    <td><input type='text' class='form-control w-50' name='qty'></td>";
+                                    <td><input type='text' class='form-control w-50' name='qty' value='$quantities' ></td>";
                             ?>
 
                             <?php
@@ -150,6 +153,8 @@ function computeTotalPrice()
                                 $get_ip_add = getIPAddress();
                                 $update_cart = "UPDATE cart_details SET quantity=$quantities WHERE ip_address='$get_ip_add' AND product_id=$product_id";
                                 $result_product_quantity = mysqli_query($conn, $update_cart);
+                                echo "<script>window.open('cart.php','_self');</script>";
+
                                 //$total_price = $total_price * $quantities;
                                 //$total_price=computeTotalPrice();
                                 //compute_total();
