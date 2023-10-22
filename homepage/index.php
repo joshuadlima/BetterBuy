@@ -62,7 +62,7 @@ session_start();
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">ABOUT</a>
+                        <a class="nav-link" href="about.php">ABOUT</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="cart.php">CART <i class="fa-solid fa-cart-shopping"></i>
@@ -116,8 +116,7 @@ session_start();
             </div>
             <div class="carousel-inner rounded-4">
                 <div class="carousel-item active">
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%282%29.jpg"
-                        class="d-block w-100" alt="Wild Landscape" />
+                    <img src="../resources/caro1.png" class="d-block w-100" alt="Wild Landscape" />
                     <div class="mask" style="background-color: rgba(0, 0, 0, 0.4)"></div>
                     <div class="carousel-caption d-none d-sm-block mb-5" style="font-size:50px; opacity:0.8;">
                         <strong>HEY
@@ -131,15 +130,13 @@ session_start();
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%283%29.jpg"
-                        class="d-block w-100" alt="Camera" />
+                    <img src="../resources/caro2.png" class="d-block w-100" alt="Camera" />
                     <div class="mask" style="background-color: rgba(0, 0, 0, 0.4)"></div>
                     <!-- <div class="carousel-caption d-none d-md-block mb-5">
                 </div> -->
                 </div>
                 <div class="carousel-item">
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%285%29.jpg"
-                        class="d-block w-100" alt="Exotic Fruits" />
+                    <img src="../resources/caro3.png" class="d-block w-100" alt="Exotic Fruits" />
                     <div class="mask" style="background-color: rgba(0, 0, 0, 0.4)"></div>
                     <!-- <div class="carousel-caption d-none d-md-block mb-5">
                 </div> -->
