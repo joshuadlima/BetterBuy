@@ -72,16 +72,20 @@ session_start();
                     </li>
                     <li class="nav-item">
                         <span class="nav-link">TOTAL PRICE:
-                            <?php total_cart_price() ?>
+                            <?php
+                            $total = computeTotalPrice();
+                            echo "$total";
+                            ?>
                         </span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="logout.php">
-                            <?php
-                            if (isset($_SESSION['username']))
-                                echo "LOGOUT";
-                            ?>
-                        </a>
+                        <?php
+                        if (isset($_SESSION['username']))
+                            echo "<a class='nav-link' href='logout.php'>LOGOUT</a>";
+                        else
+                            echo "<a class='nav-link' href='../authentication/user_login.php'>LOGIN</a>";
+                        ?>
+
                     </li>
                 </ul>
                 <form class="d-flex">
@@ -101,7 +105,7 @@ session_start();
     <?php if (!isset($_GET['search_data_product']) and !isset($_GET['product_id']) and !isset($_GET['category'])) {
         ?>
 
-        <div  id="carouselExampleCaptions" class="carousel p-3 slide carousel-fade" data-mdb-ride="carousel">
+        <div id="carouselExampleCaptions" class="carousel p-3 slide carousel-fade" data-mdb-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-mdb-target="#carouselExampleCaptions" data-mdb-slide-to="0" class="active"
                     aria-current="true" aria-label="Slide 1"></button>
@@ -110,7 +114,7 @@ session_start();
                 <button type="button" data-mdb-target="#carouselExampleCaptions" data-mdb-slide-to="2"
                     aria-label="Slide 3"></button>
             </div>
-            <div  class="carousel-inner rounded-4">
+            <div class="carousel-inner rounded-4">
                 <div class="carousel-item active">
                     <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%282%29.jpg"
                         class="d-block w-100" alt="Wild Landscape" />

@@ -3,19 +3,20 @@ include('../includes/connect.php');
 include('../functions/common_functions.php');
 //$ip = getIPAddress();  
 //echo 'User Real IP Address - '.$ip;  
-function computeTotalPrice()
-{
-    global $conn;
-    $total_price = 0;
-    $select_query = "SELECT quantity,product_price FROM cart_details,products WHERE cart_details.product_id=products.product_id";
-    $result_query = mysqli_query($conn, $select_query);
-    while ($row_data = mysqli_fetch_assoc($result_query)) {
-        $product_price = $row_data['product_price'];
-        $product_quantity = $row_data['quantity'];
-        $total_price += ($product_price * $product_quantity);
-    }
-    echo $total_price;
-}
+
+// function computeTotalPrice()
+// {
+//     global $conn;
+//     $total_price = 0;
+//     $select_query = "SELECT quantity,product_price FROM cart_details,products WHERE cart_details.product_id=products.product_id";
+//     $result_query = mysqli_query($conn, $select_query);
+//     while ($row_data = mysqli_fetch_assoc($result_query)) {
+//         $product_price = $row_data['product_price'];
+//         $product_quantity = $row_data['quantity'];
+//         $total_price += ($product_price * $product_quantity);
+//     }
+//     echo $total_price;
+// }
 ?>
 
 <!doctype html>
@@ -188,7 +189,11 @@ function computeTotalPrice()
             <form method="post">
                 <div class="d-flex mb-3">
                     <h4 class="px-3">Subtotal:<strong>
-                            <?php computeTotalPrice(); ?>/-
+
+                            <?php
+                            $total = computeTotalPrice();
+                            echo "$total";
+                            ?>/-
                         </strong></h4>
                     <input type="submit" class="bg-info px-3 py-2 border-0 mx-3" value="Continue Shopping"
                         name="continue_shop">
