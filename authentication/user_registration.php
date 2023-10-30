@@ -106,6 +106,11 @@ if (isset($_POST['user_register'])) {
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet" />
+
+    <!-- leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
 </head>
 
 <body>
@@ -132,20 +137,25 @@ if (isset($_POST['user_register'])) {
                                         </div>
 
                                         <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-location-dot fa-lg me-3 fa-fw"></i>
+                                            <i class="fas fa-location-dot fa-lg me-3 fa-fw mr-1"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <input type="text" id="user_address" name="user_address"
                                                     class="form-control" />
                                                 <label class="form-label" for="user_address">Your Address</label>
                                             </div>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary" type="button"
+                                                    onclick="getUserLocation()">AUTO</button>
+                                            </div>
                                         </div>
 
-                                        <div class="d-flex flex-row align-items-center mb-4">
+                                        <div class=" d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-phone fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <input type="tel" id="user_phone" name="user_phone"
                                                     class="form-control" />
-                                                <label class="form-label" for="user_phone">Your Phone Number</label>
+                                                <label class="form-label" for="user_phone">Your Phone
+                                                    Number</label>
                                             </div>
                                         </div>
 
@@ -192,8 +202,8 @@ if (isset($_POST['user_register'])) {
                                         </div>
 
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                            <input type="submit" value="Register" class="btn btn-primary btn-lg" id="submitbutton"
-                                                name="user_register" >
+                                            <input type="submit" value="Register" class="btn btn-primary btn-lg"
+                                                id="submitbutton" name="user_register">
                                             <!-- <button type="button" class="btn btn-primary btn-lg">Register</button> -->
                                         </div>
 
@@ -203,37 +213,38 @@ if (isset($_POST['user_register'])) {
 
                                 </div>
 
-                                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1 align-self-center justify-content-center">
-                                <div class="content">
-                                    <p>Password must contains</p>
-                                    <ul class="requirement-list">
-                                        <li>
-                                            <i class="fa-solid fa-circle"></i>
-                                            <span>At least 8 characters length</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-circle"></i>
-                                            <span>At least 1 number (0...9)</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-circle"></i>
-                                            <span>At least 1 lowercase letter (a...z)</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-circle"></i>
-                                            <span>At least 1 special symbol (!...$)</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-circle"></i>
-                                            <span>At least 1 uppercase letter (A...Z)</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-circle"></i>
-                                            <span>Password match</span>
-                                        </li>
-                                    </ul>
+                                <div
+                                    class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1 align-self-center justify-content-center">
+                                    <div class="content">
+                                        <p>Password must contain</p>
+                                        <ul class="requirement-list">
+                                            <li>
+                                                <i class="fa-solid fa-circle"></i>
+                                                <span>At least 8 characters length</span>
+                                            </li>
+                                            <li>
+                                                <i class="fa-solid fa-circle"></i>
+                                                <span>At least 1 number (0...9)</span>
+                                            </li>
+                                            <li>
+                                                <i class="fa-solid fa-circle"></i>
+                                                <span>At least 1 lowercase letter (a...z)</span>
+                                            </li>
+                                            <li>
+                                                <i class="fa-solid fa-circle"></i>
+                                                <span>At least 1 special symbol (!...$)</span>
+                                            </li>
+                                            <li>
+                                                <i class="fa-solid fa-circle"></i>
+                                                <span>At least 1 uppercase letter (A...Z)</span>
+                                            </li>
+                                            <li>
+                                                <i class="fa-solid fa-circle"></i>
+                                                <span>Password match</span>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                </div> 
                             </div>
                         </div>
                     </div>
@@ -252,6 +263,32 @@ if (isset($_POST['user_register'])) {
 
     <!-- material bootstrap js -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+
+    <!-- auto address generation using leaflet -->
+    <script>
+        function getUserLocation() {
+            document.getElementById('user_address').value = "please wait...";
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+
+                    const apiUrl = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`;
+
+                    fetch(apiUrl)
+                        .then(response => response.json())
+                        .then(data => {
+                            document.getElementById('user_address').value = data.display_name;
+                        })
+                        .catch(error => {
+                            console.error('Error getting address:', error);
+                        });
+                });
+            } else {
+                alert('Geolocation is not supported by this browser.');
+            }
+        }
+    </script>
 </body>
 
 </html>
