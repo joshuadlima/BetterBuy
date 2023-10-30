@@ -1,5 +1,6 @@
 <?php
 
+include('../functions/common_functions.php');
 include('../includes/connect.php');
 require('config.php');
 session_start();
@@ -41,6 +42,10 @@ if ($success === true) {
 
     $sql = "INSERT INTO `user_orders` (`username`,`amount_due`, `razorpay_payment_id`, `order_status`, `delivery_status`) VALUES ('$username', '$price', '$razorpay_payment_id', 'SUCCESS', 'PENDING')";
     mysqli_query($conn, $sql);
+
+    update_ordered_products($razorpay_payment_id);
+
+    // update_ordered_products($)
     echo "<script>alert(`Your payment was successful!`)</script>";
 
 } else {
