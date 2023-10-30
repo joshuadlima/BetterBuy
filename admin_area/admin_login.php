@@ -1,32 +1,33 @@
 <?php
 include('../includes/connect.php');
 include('../functions/common_functions.php');
+session_start();
 
-if (isset($_POST['admin_auth'])) {
-
-    session_start();
-    $admin_username = $_SESSION['admin_username'];
-    $admin_address = $_SESSION['admin_address'];
-    $admin_phone = $_SESSION['admin_phone'];
-    $admin_email = $_SESSION['admin_email'];
-    $admin_password = $_SESSION['admin_password'];
-    $admin_ip = $_SESSION['admin_ip'];
-    $otp = $_SESSION['otp'];
+if (isset($_POST['admin_login'])) {
+    // get user details from form
+    $username = $_POST['admin_username'];
+    $password = $_POST['admin_password'];
+    $password = hash('md5', $password); // get the password hash
 
 
-    $getotp = $_POST['admin_otp'];
+    // check if user already exists
+    $sql = "SELECT * FROM `admin_table` WHERE `admin_username`='$username'; ";
+    $result = mysqli_query($conn, $sql);
 
-    if ($otp == $getotp) {
-        // enter admin details into the database
-        $insert_query = "INSERT INTO `admin_table` (`admin_username`, `admin_email`, `admin_password`, `admin_mobile`,`admin_ip`) VALUES ('$admin_username', '$admin_email', '$admin_password', '$admin_mobile', '$admin_ip');";
-        $result = mysqli_query($conn, $insert_query);
-
-        header('Location: index.php');
-
+    if (mysqli_num_rows($result) == 0) {
+        echo "<script>alert(`admin doesn't exist, please retry`)</script>";
     } else {
-        echo "<script>alert('wrong otp entered!!')</script>";
+        $row = mysqli_fetch_row($result);
+        if ($row[4] != $password) {
+            echo "<script>alert('entered password is incorrect')</script>";
+        } else {
+            // save username for future reference
+            $_SESSION['admin_username'] = $username;
+            header('Location: index.php');
+        }
     }
 }
+
 ?>
 
 <!doctype html>
@@ -64,21 +65,31 @@ if (isset($_POST['admin_auth'])) {
                             <div class="row justify-content-center">
                                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Authenticate</p>
+                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
 
                                     <form method="POST" class="mx-1 mx-md-4">
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                            <div class="form-outline flex-fill mb-0">
+                                                <input type="text" id="admin_username" name="admin_username"
+                                                    class="form-control" required="required" />
+                                                <label class="form-label" for="admin_username">Your Username</label>
+                                            </div>
+                                        </div>
+
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="password" id="admin_otp" name="admin_otp"
+                                                <input type="password" id="admin_password" name="admin_password"
                                                     class="form-control" />
-                                                <label class="form-label" for="admin_top">OTP</label>
+                                                <label class="form-label" for="admin_password">Password</label>
                                             </div>
                                         </div>
 
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                            <input type="submit" value="Submit" class="btn btn-primary btn-lg"
-                                                name="admin_auth">
+                                            <input type="submit" value="Login" class="btn btn-primary btn-lg"
+                                                name="admin_login">
                                         </div>
                                     </form>
 
