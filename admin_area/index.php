@@ -1,6 +1,12 @@
 <?php
 include('../includes/connect.php');
 include('../functions/common_functions.php');
+session_start();
+
+if (!isset($_SESSION['admin_username'])) {
+    header('Location: admin_login.php');
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
