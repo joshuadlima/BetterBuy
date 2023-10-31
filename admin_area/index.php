@@ -66,24 +66,15 @@ if (!isset($_SESSION['admin_username'])) {
                 <div class="button text-center">
                     <button class="btn btn-light" style="margin:10px"><a href="index.php?insert_products"
                             class="nav-link text-dark border-1">Insert Products</a></button>
-                    <button class="btn btn-light" style="margin:10px"><a href="index.php?view_products"
-                            class="nav-link text-dark">View
+                    <button class="btn btn-light" style="margin:10px"><a href="index.php?view_products" class="nav-link text-dark">View
                             products</a></button>
                     <button class="btn btn-light" style="margin:10px"><a href="index.php?insert_category"
                             class="nav-link text-dark">Insert Categories</a></button>
-                    <button class="btn btn-light" style="margin:10px"><a href="index.php?view_categories"
-                            class="nav-link text-dark">View
+                    <button class="btn btn-light" style="margin:10px"><a href="index.php?view_categories" class="nav-link text-dark">View
                             Categories</a></button>
-                    <button class="btn btn-light" style="margin:10px"><a href="" class="nav-link text-dark">Insert
-                            Brands</a></button>
-                    <button class="btn btn-light" style="margin:10px"><a href="" class="nav-link text-dark">View
-                            Brands</a></button>
-                    <button class="btn btn-light" style="margin:10px"><a href="" class="nav-link text-dark">All
+                    <button class="btn btn-light" style="margin:10px"><a href="index.php?list_orders" class="nav-link text-dark">All
                             orders</a></button>
-                    <button class="btn btn-light" style="margin:10px"><a href="" class="nav-link text-dark">All
-                            payments</a></button>
-                    <button class="btn btn-light" style="margin:10px"><a href="index.php?list_users"
-                            class="nav-link text-dark">List
+                    <button class="btn btn-light" style="margin:10px"><a href="index.php?list_users" class="nav-link text-dark">List
                             users</a></button>
                     <button class="btn btn-light" style="margin:10px"><a href="admin_logout.php"
                             class="nav-link text-dark">Logout</a></button>
@@ -115,6 +106,9 @@ if (!isset($_SESSION['admin_username'])) {
             }
             if (isset($_GET['list_users'])) {
                 include('list_users.php');
+            }
+            if (isset($_GET['list_orders'])) {
+                include('list_orders.php');
             }
             ?>
         </div>

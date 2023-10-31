@@ -47,10 +47,11 @@ global $conn;
         <td>$user_mobile</td>
     </tr>
     
-     </tbody>
-    </table>";
+     ";
     
 
 }
 }
+echo "</tbody>
+    </table>";
 ?>
