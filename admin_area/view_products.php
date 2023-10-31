@@ -37,14 +37,22 @@ global $conn;
         $product_name=$row['product_name'];
         $product_image=$row['product_image'];
         $product_price=$row['product_price'];
+
         $number++;
-    echo "
+        $query="select product_quantity from ordered_products where product_id='$product_id'";
+        $result1=mysqli_query($conn,$query);
+        $product_sold=0;
+        while($row1=mysqli_fetch_assoc($result1))
+        {
+            $product_sold+=$row1['product_quantity'];
+        }
+        echo "
     <tr class='text-center'>
         <td>$number</td>
         <td>$product_name</td>
         <td><img src='../product_images/$product_image' height='150px' ></td>
         <td>$product_price/-</td>
-        <td>0</td>
+        <td>$product_sold</td>
         <td><a href='index.php?delete_products=$product_id'>delete</a></td>
     </tr>
     
