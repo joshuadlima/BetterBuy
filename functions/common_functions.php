@@ -188,10 +188,11 @@ function cart()
         } else {
             $insert_query = "insert into cart_details (product_id,ip_address,quantity) values ($get_product_id,'$get_ip_id',1)";
             $result_query = mysqli_query($conn, $insert_query);
-            echo "<script>alert('Item is added to cart')</script>";
-            echo "<script>window.open('../homepage/index.php,'_self')</script>";
+            echo "<script>alert('Item is added to cart');</script>";
+            echo "<script>window.open('../homepage/index.php,'_self'); location.reload();</script>";
         }
     }
+
 }
 //function to get cart item numbers
 function cart_item()
