@@ -35,7 +35,7 @@ global $conn;
     while($row=mysqli_fetch_assoc($result))
     {
         
-        $orders_product_id=$row['orders_product_id'];
+        $orders_product_id=$row['ordered_products_id'];
         $product_id=$row['product_id'];
         $razorpay_payment_id=$row['razorpay_payment_id'];
         $product_quantity=$row['product_quantity'];
