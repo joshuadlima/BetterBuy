@@ -71,6 +71,9 @@ session_start();
                             </sup></a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="orders.php">ORDERS</a>
+                    </li>
+                    <li class="nav-item">
                         <span class="nav-link">TOTAL PRICE:
                             <?php
                             $total = computeTotalPrice();
