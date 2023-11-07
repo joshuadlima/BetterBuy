@@ -75,6 +75,19 @@ if ($displayCurrency !== 'INR') {
 $json = json_encode($data);
 ?>
 
+<style>
+  .razorpay-payment-button {
+    padding: 10px;
+    margin-left: 47%;
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 20px;
+    border: solid grey 1px;
+    border-radius: 7px;
+    /* background-color: red; */
+  }
+</style>
 
 <form action="../payment/verify.php" method="POST">
   <script src="https://checkout.razorpay.com/v1/checkout.js" data-key="<?php echo $data['key'] ?>"
