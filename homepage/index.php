@@ -65,13 +65,13 @@ session_start();
                         <a class="nav-link" href="about.php">ABOUT</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="orders.php">ORDERS</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="cart.php">CART <i class="fa-solid fa-cart-shopping"></i>
                             <sup>
                                 <?php cart_item() ?>
                             </sup></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="orders.php">ORDERS</a>
                     </li>
                     <li class="nav-item">
                         <span class="nav-link">TOTAL PRICE:

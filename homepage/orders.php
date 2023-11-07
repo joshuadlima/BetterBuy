@@ -2,14 +2,18 @@
 include('../includes/connect.php');
 include('../functions/common_functions.php');
 session_start();
+//$ip = getIPAddress();  
+//echo 'User Real IP Address - '.$ip;  
+
 ?>
+
 <!doctype html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cart details</title>
+    <title>Cart Details</title>
 
     <!-- bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -27,8 +31,10 @@ session_start();
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet" />
 </head>
+
 <body>
-<nav class="navbar navbar-expand-lg bg-light">
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
 
             <a class="navbar-brand mt-2 mt-sm-0 rounded" style="background-color: red;" href="index.php">
@@ -43,9 +49,9 @@ session_start();
                     <li class="nav-item">
                         <a class="nav-link" href="index.php">HOME</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="#">PRODUCTS</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -59,13 +65,13 @@ session_start();
                         <a class="nav-link" href="about.php">ABOUT</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="orders.php">ORDERS</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="cart.php">CART <i class="fa-solid fa-cart-shopping"></i>
                             <sup>
                                 <?php cart_item() ?>
                             </sup></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="orders.php">ORDERS</a>
                     </li>
                     <li class="nav-item">
                         <span class="nav-link">TOTAL PRICE:
@@ -87,57 +93,55 @@ session_start();
                 </ul>
             </div>
         </div>
-    </nav>    
-<?php
-    global $conn;
-    if(isset($_SESSION['username']))
-    {
-    //echo $_SESSION['username'];
-    $usersearch=$_SESSION['username'];
-    $select_query="select * from user_orders where username='$usersearch'";
-    }
-    else
-    {
-        $select_query="select * from user_orders where 0";
-    }
-    $result=mysqli_query($conn,$select_query);
-    $rowcount=mysqli_num_rows($result);
-    $count=0;
-    if($rowcount==0)
-    {
-        echo "<h2 class='text-danger text-center mt-5'>No orders</h2>";
-    }
-    else
-    {
+    </nav>
 
-echo 
-"
-<h3 class='text-center text-success mt-5z'>All orders</h3>
-<table class='table table-bordered-mt-5'>
-    <thead class='bg-info text-center'>
+
+    <!-- Calling cart function  -->
+    <?php cart(); ?>
+
+    <div style="margin: 30px;">
+
+        <?php
+        global $conn;
+        if (isset($_SESSION['username'])) {
+            //echo $_SESSION['username'];
+            $usersearch = $_SESSION['username'];
+            $select_query = "select * from user_orders where username='$usersearch'";
+        } else {
+            $select_query = "select * from user_orders where 0";
+        }
+        $result = mysqli_query($conn, $select_query);
+        $rowcount = mysqli_num_rows($result);
+        $count = 0;
+        if ($rowcount == 0) {
+            echo "<h2 class='text-danger text-center mt-5'>No orders</h2>";
+        } else {
+
+            echo
+                "
+<h3 class='text-center m-4'>ALL ORDERS</h3>
+<table class='table table-bordered' style='border:solid; '>
+    <thead class='text-center' style='background-color:silver'>
         <tr>
-            <th>Order ID</th>
-            <th>Amount</th>
-            <th>Order Date</th>
-            <th>Razorpay ID</th>
-            <th>Order Status</th>
+            <th>AMOUNT</th>
+            <th>ORDER DATE</th>
+            <th>RAZORPAY ID</th>
+            <th>ORDER STATUS</th>
         </tr>
     </thead>
-<tbody class='bg-secondary text-light'>
-"; 
-global $conn;
-    $count=0;
-    while($row=mysqli_fetch_assoc($result))
-    {
-        
-        $order_id=$row['order_id'];
-        $amount_due=$row['amount_due'];
-        $razorpay_payment_id=$row['razorpay_payment_id'];
-        $orderdate=$row['order_date'];
-        $orderstatus=$row['order_status'];
-    echo "
-    <tr class='text-center'>
-        <td>$order_id</td>
+<tbody class='text-light' style='background-color:silver'>
+";
+            global $conn;
+            $count = 0;
+            while ($row = mysqli_fetch_assoc($result)) {
+
+                $order_id = $row['order_id'];
+                $amount_due = $row['amount_due'];
+                $razorpay_payment_id = $row['razorpay_payment_id'];
+                $orderdate = $row['order_date'];
+                $orderstatus = $row['order_status'];
+                echo "
+    <tr class='text-center'style='border:black;' >
         <td>$amount_due</td>
         <td> $orderdate</td>
         <td>$razorpay_payment_id</td>
@@ -146,11 +150,13 @@ global $conn;
     </tr>
     
      ";
-    
 
-}
-}
-echo "</tbody>
+
+            }
+        }
+        echo "</tbody>
     </table>";
-?>
+        ?>
+
+    </div>
 </body>

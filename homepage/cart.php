@@ -46,8 +46,6 @@ include('../functions/common_functions.php');
 
 <body>
     <!-- navbar -->
-
-    <!-- navbar -->
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
 
@@ -76,7 +74,10 @@ include('../functions/common_functions.php');
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">ABOUT</a>
+                        <a class="nav-link" href="about.php">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="orders.php">ORDERS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="cart.php">CART <i class="fa-solid fa-cart-shopping"></i>
@@ -84,7 +85,23 @@ include('../functions/common_functions.php');
                                 <?php cart_item() ?>
                             </sup></a>
                     </li>
+                    <li class="nav-item">
+                        <span class="nav-link">TOTAL PRICE:
+                            <?php
+                            $total = computeTotalPrice();
+                            echo "$total";
+                            ?>
+                        </span>
+                    </li>
+                    <li class="nav-item">
+                        <?php
+                        if (isset($_SESSION['username']))
+                            echo "<a class='nav-link' href='logout.php'>LOGOUT</a>";
+                        else
+                            echo "<a class='nav-link' href='../authentication/user_login.php'>LOGIN</a>";
+                        ?>
 
+                    </li>
                 </ul>
             </div>
         </div>
@@ -95,7 +112,7 @@ include('../functions/common_functions.php');
     cart();
     ?>
     <!-- table to display the cart items -->
-    <div class="container">
+    <div class="container" style="margin:auto; margin-top:50px; border-radius: 20px;">
         <div class="row">
             <table class="table table-bordered text-center">
 
@@ -114,12 +131,12 @@ include('../functions/common_functions.php');
                     echo "
                         <thead>
                         <tr>
-                            <th>Product Title</th>
-                            <th>Product Image</th>
-                            <th>Quantity</th>
-                            <th>Total Price</th>
-                            <th>Remove</th>
-                            <th colspan='2'>Operations</th>
+                            <th>PRODUCT NAME</th>
+                            <th>PRODUCT IMAGE</th>
+                            <th>QUANTITY</th>
+                            <th>TOTAL PRICE</th>
+                            <th>REMOVE</th>
+                            <th colspan='2'>OPERATIONS</th>
                         </tr>
                     </thead>
                     <tbody> ";
@@ -172,10 +189,10 @@ include('../functions/common_functions.php');
                             <td><input type='checkbox' name='removeitem[]' value='$product_id'></td>
                             <td>
 
-                            <button type='submit' class='bg-info px-3 py-2 border-0 mx-3' value='$product_id' name='update_cart'>
+                            <button type='submit' class='btn btn-secondary' value='$product_id' name='update_cart'>
                                 Update Cart
                             </button>
-                                <input type='submit' class='bg-info px-3 py-2 border-0 mx-3' value='Remove Cart' name='remove_cart'>
+                                <input type='submit' class='btn btn-secondary' value='Remove Cart' name='remove_cart'>
                             </td>
                             </tr>
                             </form>";
@@ -188,14 +205,14 @@ include('../functions/common_functions.php');
             <!-- subtotal -->
             <form method="post">
                 <div class="d-flex mb-3">
-                    <h4 class="px-3">Subtotal:<strong>
+                    <h4 class="btn btn-dark m-2" style="pointer-events:none; box-shadow:none;">Subtotal:<strong>
 
                             <?php
                             $total = computeTotalPrice();
                             echo "$total";
                             ?>/-
                         </strong></h4>
-                    <input type="submit" class="bg-info px-3 py-2 border-0 mx-3" value="Continue Shopping"
+                    <input type="submit" class='btn btn-primary m-2' value="Continue Shopping"
                         name="continue_shop">
                     <!-- Redirecting to homepage using 'continue shopping' button -->
                     <?php
@@ -204,8 +221,8 @@ include('../functions/common_functions.php');
                     }
                     ?>
                     <!-- <a> -->
-                    <button class="bg-secondary px-3 py-2 border-0">
-                        <a href="../authentication/checkout.php" style="color: black;">Checkout</a>
+                    <button class='btn btn-primary m-2'>
+                        <a href="../authentication/checkout.php" style="color: white;">Checkout</a>
                     </button>
                     <!-- </a> -->
                 </div>
