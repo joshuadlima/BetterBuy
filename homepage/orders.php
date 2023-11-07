@@ -119,18 +119,18 @@ session_start();
 
             echo
                 "
-<h3 class='text-center m-4'>ALL ORDERS</h3>
-<table class='table table-bordered' style='border:solid; '>
-    <thead class='text-center' style='background-color:silver'>
-        <tr>
-            <th>AMOUNT</th>
-            <th>ORDER DATE</th>
-            <th>RAZORPAY ID</th>
-            <th>ORDER STATUS</th>
-        </tr>
-    </thead>
-<tbody class='text-light' style='background-color:silver'>
-";
+                    <h3 class='text-center m-4'>ALL ORDERS</h3>
+                    <table class='table table-bordered' style='border:solid; '>
+                        <thead class='text-center' style='background-color:silver'>
+                            <tr>
+                                <th>AMOUNT</th>
+                                <th>ORDER DATE</th>
+                                <th>RAZORPAY ID</th>
+                                <th>ORDER STATUS</th>
+                            </tr>
+                        </thead>
+                    <tbody class='text-light' style='background-color:silver'>
+                    ";
             global $conn;
             $count = 0;
             while ($row = mysqli_fetch_assoc($result)) {
@@ -158,5 +158,25 @@ session_start();
     </table>";
         ?>
 
+
+
+
     </div>
+
+    <!-- footer -->
+    <footer class="p-3 text-center" style="background-color: red; color: white;">
+        © 1996-2023, BetterBuy.com, Inc. or its affiliates
+    </footer>
+    <!-- bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+
+    <!-- material bootstrap js -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
 </body>
+
+</html>
