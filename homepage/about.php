@@ -51,9 +51,9 @@ session_start();
                     <li class="nav-item">
                         <a class="nav-link" href="index.php">HOME</a>
                     </li>
-                    <!-- <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="#">PRODUCTS</a>
-                    </li> -->
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -127,7 +127,9 @@ session_start();
                                             class="fa fa-facebook-square fa-3x social"></i></a> </li>
                                 <li><a href="https://twitter.com/"><i id="social-tw"
                                             class="fa fa-twitter-square fa-3x social"></i></a> </li>
-                                <li> <a href="mailto:betterbuy@gmail.com"><i id="social-em"
+                                <li> <a href="https://plus.google.com/"><i id="social-gp"
+                                            class="fa fa-google-plus-square fa-3x social"></i></a> </li>
+                                <li> <a href="mailto:bootsnipp@gmail.com"><i id="social-em"
                                             class="fa fa-envelope-square fa-3x social"></i></a> </li>
                             </ul>
                         </div>

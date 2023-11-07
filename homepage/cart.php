@@ -1,6 +1,22 @@
 <?php
 include('../includes/connect.php');
 include('../functions/common_functions.php');
+//$ip = getIPAddress();  
+//echo 'User Real IP Address - '.$ip;  
+
+// function computeTotalPrice()
+// {
+//     global $conn;
+//     $total_price = 0;
+//     $select_query = "SELECT quantity,product_price FROM cart_details,products WHERE cart_details.product_id=products.product_id";
+//     $result_query = mysqli_query($conn, $select_query);
+//     while ($row_data = mysqli_fetch_assoc($result_query)) {
+//         $product_price = $row_data['product_price'];
+//         $product_quantity = $row_data['quantity'];
+//         $total_price += ($product_price * $product_quantity);
+//     }
+//     echo $total_price;
+// }
 ?>
 
 <!doctype html>
@@ -47,9 +63,9 @@ include('../functions/common_functions.php');
                     <li class="nav-item">
                         <a class="nav-link" href="index.php">HOME</a>
                     </li>
-                    <!-- <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="#">PRODUCTS</a>
-                    </li> -->
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
