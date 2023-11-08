@@ -102,7 +102,7 @@ if (isset($_POST['user_auth'])) {
                                 </div>
                                 <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 
-                                    <img src="../resources/logo.png" class="img-fluid" alt="Sample image">
+                                    <img src="../resources/logo1.png" class="img-fluid" alt="Sample image">
 
                                 </div>
                             </div>

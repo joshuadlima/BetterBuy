@@ -38,7 +38,7 @@ session_start();
         <div class="container-fluid">
 
             <a class="navbar-brand mt-2 mt-sm-0 rounded" style="" href="index.php">
-                <img src="../resources/logo.png" height="50" alt="BetterBuy Logo" loading="lazy" />
+                <img src="../resources/logo1.png" height="50" alt="BetterBuy Logo" loading="lazy" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                 aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
