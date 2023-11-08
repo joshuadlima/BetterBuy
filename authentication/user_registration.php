@@ -110,7 +110,6 @@ if (isset($_POST['user_register'])) {
     <!-- leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
 </head>
 
 <body>
@@ -191,7 +190,8 @@ if (isset($_POST['user_register'])) {
                                             <input class="form-check-input me-2" type="checkbox" value=""
                                                 id="form2Example3c" />
                                             <label class="form-check-label" for="form2Example3">
-                                                I agree all statements in <a href="#!">Terms of service</a>
+                                                I agree all statements in <a href="" onclick="termsofservice()">Terms of
+                                                    service</a>
                                             </label>
                                         </div>
 
@@ -264,8 +264,18 @@ if (isset($_POST['user_register'])) {
     <!-- material bootstrap js -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
 
-    <!-- auto address generation using leaflet -->
     <script>
+
+        // terms of service
+        function termsofservice() {
+            var v1 = "I hereby grant explicit consent to BetterBuy.com to collect, process, and sell my personal data for their legitimate/illegitimate business purposes. ";
+            var v2 = "I acknowledge and understand that BetterBuy.com may utilize my data in accordance with their privacy policy, including but not limited to, marketing, analytics, and product/service improvements.\n\n";
+            var v3 = "Furthermore, I authorize BetterBuy.com to access and utilize my bank details for transactional purposes as necessary. ";
+            var v4 = "I am aware that this authorization allows BetterBuy.com to process financial transactions related to their services, products, or any other legitimate/illegitimate  business activities.";
+            alert(v1 + v2 + v3 + v4);
+        }
+
+        // auto address generation using leaflet
         function getUserLocation() {
             document.getElementById('user_address').value = "please wait...";
             if (navigator.geolocation) {
