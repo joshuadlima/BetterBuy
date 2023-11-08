@@ -174,7 +174,9 @@ session_start();
                             <button type='submit' class='btn btn-secondary' value='$product_id' name='update_cart'>
                                 Update Cart
                             </button>
-                                <input type='submit' class='btn btn-secondary' value='Remove Cart' name='remove_cart'>
+                            <button type='submit' class='btn btn-secondary' value='$product_id' name='remove_cart'>
+                                Remove Cart
+                            </button>
                             </td>
                             </tr>
                             </form>";
