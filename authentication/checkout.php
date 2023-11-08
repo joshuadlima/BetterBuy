@@ -66,9 +66,9 @@ session_start();
     </div>
 
     <!-- footer -->
-    <footer class="p-3 text-center" style="background-color: red; color: white;">
+    <!-- <footer class="p-3 text-center" style="background-color: red; color: white;">
         © 1996-2023, BetterBuy.com, Inc. or its affiliates
-    </footer>
+    </footer> -->
 
     <!-- bootstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

@@ -64,7 +64,10 @@ session_start();
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">ABOUT</a>
+                        <a class="nav-link" href="about.php">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="orders.php">ORDERS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="cart.php">CART <i class="fa-solid fa-cart-shopping"></i>
@@ -90,12 +93,6 @@ session_start();
 
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                        name="search_data" action="index.php" method="GET">
-                    <button class="btn btn-secondary" type="submit" value="Search"
-                        name="search_data_product">Search</button>
-                </form>
             </div>
         </div>
     </nav>

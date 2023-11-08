@@ -49,9 +49,6 @@ session_start();
                     <li class="nav-item">
                         <a class="nav-link" href="index.php">HOME</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#">PRODUCTS</a>
-                    </li> -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -63,6 +60,9 @@ session_start();
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="about.php">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="orders.php">ORDERS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="cart.php">CART <i class="fa-solid fa-cart-shopping"></i>
