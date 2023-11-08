@@ -114,14 +114,14 @@ session_start();
         $rowcount = mysqli_num_rows($result);
         $count = 0;
         if ($rowcount == 0) {
-            echo "<h2 class='text-danger text-center mt-5'>No orders</h2>";
+            echo "<h2 class='text-center m-4'>NO ORDERS</h2>";
         } else {
 
             echo
                 "
-                    <h3 class='text-center m-4'>ALL ORDERS</h3>
+                    <h3 class='text-center m-4'>MY ORDERS</h3>
                     <table class='table table-bordered' style='border:solid; '>
-                        <thead class='text-center' style='background-color:silver'>
+                        <thead class='text-center' style='background-color:white'>
                             <tr>
                                 <th>AMOUNT</th>
                                 <th>ORDER DATE</th>
@@ -129,7 +129,7 @@ session_start();
                                 <th>ORDER STATUS</th>
                             </tr>
                         </thead>
-                    <tbody class='text-light' style='background-color:silver'>
+                    <tbody class='text-light' style='background-color:white'>
                     ";
             global $conn;
             $count = 0;

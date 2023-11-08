@@ -1,22 +1,7 @@
 <?php
 include('../includes/connect.php');
 include('../functions/common_functions.php');
-//$ip = getIPAddress();  
-//echo 'User Real IP Address - '.$ip;  
-
-// function computeTotalPrice()
-// {
-//     global $conn;
-//     $total_price = 0;
-//     $select_query = "SELECT quantity,product_price FROM cart_details,products WHERE cart_details.product_id=products.product_id";
-//     $result_query = mysqli_query($conn, $select_query);
-//     while ($row_data = mysqli_fetch_assoc($result_query)) {
-//         $product_price = $row_data['product_price'];
-//         $product_quantity = $row_data['quantity'];
-//         $total_price += ($product_price * $product_quantity);
-//     }
-//     echo $total_price;
-// }
+session_start();
 ?>
 
 <!doctype html>
@@ -61,9 +46,6 @@ include('../functions/common_functions.php');
                     <li class="nav-item">
                         <a class="nav-link" href="index.php">HOME</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#">PRODUCTS</a>
-                    </li> -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -212,8 +194,7 @@ include('../functions/common_functions.php');
                             echo "$total";
                             ?>/-
                         </strong></h4>
-                    <input type="submit" class='btn btn-primary m-2' value="Continue Shopping"
-                        name="continue_shop">
+                    <input type="submit" class='btn btn-primary m-2' value="Continue Shopping" name="continue_shop">
                     <!-- Redirecting to homepage using 'continue shopping' button -->
                     <?php
                     if (isset($_POST['continue_shop'])) {
