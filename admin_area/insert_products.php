@@ -43,7 +43,7 @@ if(isset($_POST['insert_product']))
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="bg-light">
+<body class="">
     <div class="container mt-3">
         <h1 class="text-center">Insert Products</h1>
         <!-- FORM -->
