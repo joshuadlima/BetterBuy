@@ -96,6 +96,13 @@ if (isset($_POST['user_login'])) {
 
                                         <div class="d-flex justify-content-center mb-2">
                                             <strong class="small">
+                                                <a href="../admin_area/admin_login.php">Admin? Proceed to admin
+                                                    login!</a>
+                                            </strong>
+                                        </div>
+
+                                        <div class="d-flex justify-content-center mb-2">
+                                            <strong class="small">
                                                 <a href="user_registration.php">Don't have an account? Register!</a>
                                             </strong>
                                         </div>

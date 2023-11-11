@@ -52,9 +52,6 @@ session_start();
                     <li class="nav-item">
                         <a class="nav-link" href="index.php">HOME</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#">PRODUCTS</a>
-                    </li> -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -106,7 +103,7 @@ session_start();
             <div class="row">
                 <div class="col-md-7 col-sm-6">
                     <div class="about-title clearfix">
-                        <h1>About <span>BetterBuy.com</span></h1>
+                        <h1>About <span style="color: red;">BetterBuy.com</span></h1>
                         <h3>You Better Buy. </h3>
                         <p class="about-paddingB">Welcome to BetterBuy, where the stakes are high, and the savings are
                             even higher. Listen closely, mortal shoppers, for you have entered the realm of ruthless
@@ -122,11 +119,16 @@ session_start();
                         <div class="about-icons">
                             <ul>
                                 <li><a href="https://www.facebook.com/"><i id="social-fb"
-                                            class="fa fa-facebook-square fa-3x social"></i></a> </li>
+                                            class="fa fa-facebook-square fa-3x social"
+                                            style="box-shadow: none;"></i></a>
+                                </li>
                                 <li><a href="https://twitter.com/"><i id="social-tw"
-                                            class="fa fa-twitter-square fa-3x social"></i></a> </li>
-                                <li> <a href="mailto:betterbuy@gmail.com"><i id="social-em"
-                                            class="fa fa-envelope-square fa-3x social"></i></a> </li>
+                                            class="fa fa-twitter-square fa-3x social" style="box-shadow: none;"></i></a>
+                                </li>
+                                <li> <a href="mailto:queries@betterbuy.com"><i id="social-em"
+                                            class="fa fa-envelope-square fa-3x social"
+                                            style="box-shadow: none;"></i></a>
+                                </li>
                             </ul>
                         </div>
                     </div>
