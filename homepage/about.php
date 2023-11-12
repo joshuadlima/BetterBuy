@@ -11,6 +11,7 @@ session_start();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BetterBuy</title>
+    <link rel="icon" type="image/x-icon" href="../resources/favicon.png">
 
     <!-- bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -39,8 +40,8 @@ session_start();
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
 
-            <a class="navbar-brand mt-2 mt-sm-0 rounded" style="background-color: red;" href="index.php">
-                <img src="../resources/logo.png" height="50" alt="BetterBuy Logo" loading="lazy" />
+            <a class="navbar-brand mt-2 mt-sm-0 rounded" style="" href="index.php">
+                <img src="../resources/logo1.png" height="50" alt="BetterBuy Logo" loading="lazy" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                 aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,9 +52,6 @@ session_start();
                     <li class="nav-item">
                         <a class="nav-link" href="index.php">HOME</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#">PRODUCTS</a>
-                    </li> -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -105,7 +103,7 @@ session_start();
             <div class="row">
                 <div class="col-md-7 col-sm-6">
                     <div class="about-title clearfix">
-                        <h1>About <span>BetterBuy.com</span></h1>
+                        <h1>About <span style="color: red;">BetterBuy.com</span></h1>
                         <h3>You Better Buy. </h3>
                         <p class="about-paddingB">Welcome to BetterBuy, where the stakes are high, and the savings are
                             even higher. Listen closely, mortal shoppers, for you have entered the realm of ruthless
@@ -121,11 +119,16 @@ session_start();
                         <div class="about-icons">
                             <ul>
                                 <li><a href="https://www.facebook.com/"><i id="social-fb"
-                                            class="fa fa-facebook-square fa-3x social"></i></a> </li>
+                                            class="fa fa-facebook-square fa-3x social"
+                                            style="box-shadow: none;"></i></a>
+                                </li>
                                 <li><a href="https://twitter.com/"><i id="social-tw"
-                                            class="fa fa-twitter-square fa-3x social"></i></a> </li>
-                                <li> <a href="mailto:betterbuy@gmail.com"><i id="social-em"
-                                            class="fa fa-envelope-square fa-3x social"></i></a> </li>
+                                            class="fa fa-twitter-square fa-3x social" style="box-shadow: none;"></i></a>
+                                </li>
+                                <li> <a href="mailto:queries@betterbuy.com"><i id="social-em"
+                                            class="fa fa-envelope-square fa-3x social"
+                                            style="box-shadow: none;"></i></a>
+                                </li>
                             </ul>
                         </div>
                     </div>

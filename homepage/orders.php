@@ -14,6 +14,7 @@ session_start();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cart Details</title>
+    <link rel="icon" type="image/x-icon" href="../resources/favicon.png">
 
     <!-- bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -37,8 +38,8 @@ session_start();
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
 
-            <a class="navbar-brand mt-2 mt-sm-0 rounded" style="background-color: red;" href="index.php">
-                <img src="../resources/logo.png" height="50" alt="BetterBuy Logo" loading="lazy" />
+            <a class="navbar-brand mt-2 mt-sm-0 rounded" style="" href="index.php">
+                <img src="../resources/logo1.png" height="50" alt="BetterBuy Logo" loading="lazy" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                 aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">

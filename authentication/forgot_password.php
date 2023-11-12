@@ -84,6 +84,7 @@ if (isset($_POST['user_val'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BetterBuy</title>
+    <link rel="icon" type="image/x-icon" href="../resources/favicon.png">
 
     <!-- bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -140,7 +141,7 @@ if (isset($_POST['user_val'])) {
                                 </div>
                                 <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 
-                                    <img src="../resources/logo.png" class="img-fluid" alt="Sample image">
+                                    <img src="../resources/logo1.png" class="img-fluid" alt="Sample image">
 
                                 </div>
                             </div>

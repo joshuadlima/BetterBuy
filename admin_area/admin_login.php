@@ -65,7 +65,7 @@ if (isset($_POST['admin_login'])) {
                             <div class="row justify-content-center">
                                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
+                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Admin Login</p>
 
                                     <form method="POST" class="mx-1 mx-md-4">
 
@@ -87,6 +87,13 @@ if (isset($_POST['admin_login'])) {
                                             </div>
                                         </div>
 
+                                        <div class="d-flex justify-content-center mb-2">
+                                            <strong class="small">
+                                                <a href="../authentication/user_login.php">User? Proceed to user
+                                                    login!</a>
+                                            </strong>
+                                        </div>
+
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                             <input type="submit" value="Login" class="btn btn-primary btn-lg"
                                                 name="admin_login">
@@ -96,7 +103,7 @@ if (isset($_POST['admin_login'])) {
                                 </div>
                                 <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 
-                                    <img src="../resources/logo.png" class="img-fluid" alt="Sample image">
+                                    <img src="../resources/logo1.png" class="img-fluid" alt="Sample image">
 
                                 </div>
                             </div>
