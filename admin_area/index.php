@@ -22,24 +22,31 @@ if (!isset($_SESSION['admin_username'])) {
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-light button d-flex justify-content-between" style="background-color:#BE3144;">
-
+    <nav class="navbar navbar-expand-lg bg-light" style="background-color:#BE3144;">
+    <div class="container-fluid">
         <a class="navbar-brand mt-2 mt-sm-0 rounded" style="" href="index.php">
             <img src="../resources/logo1.png" height="50" alt="BetterBuy Logo" loading="lazy" />
         </a>
-        <div class="">
-        <button class="btn btn-light " style="margin:10px"><a href="index.php?insert_products" class="nav-link text-dark border-1">Insert Products</a></button>
-        <button class="btn btn-light " style="margin:10px"><a href="index.php?view_products" class="nav-link text-dark">View
-                products</a></button>
-        <button class="btn btn-light " style="margin:10px"><a href="index.php?insert_category" class="nav-link text-dark">Insert Categories</a></button>
-        <button class="btn btn-light " style="margin:10px"><a href="index.php?view_categories" class="nav-link text-dark">View
-                Categories</a></button>
-        <button class="btn btn-light " style="margin:10px"><a href="index.php?list_orders" class="nav-link text-dark">All
-                orders</a></button>
-        <button class="btn btn-light " style="margin:10px"><a href="index.php?list_users" class="nav-link text-dark">List
-                users</a></button>
-        <button class="btn btn-light " style="margin:10px"><a href="admin_logout.php" class="nav-link text-dark">Logout</a></button>
-        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item"><button class="btn btn-light "><a href="index.php?insert_products" class="nav-link text-dark border-1">Insert Products</a></button></li>
+        <li class="nav-item"><button class="btn btn-light "><a href="index.php?view_products" class="nav-link text-dark">View
+                products</a></button></li>
+        <li class="nav-item"><button class="btn btn-light "><a href="index.php?insert_category" class="nav-link text-dark">Insert Categories</a></button></li>
+        <li class="nav-item"><button class="btn btn-light "><a href="index.php?view_categories" class="nav-link text-dark">View
+                Categories</a></button></li>
+        <li class="nav-item"><button class="btn btn-light "><a href="index.php?list_orders" class="nav-link text-dark">All
+                orders</a></button></li>
+        <li class="nav-item"><button class="btn btn-light "><a href="index.php?list_users" class="nav-link text-dark">List
+                users</a></button></li>
+        <li class="nav-item"><button class="btn btn-light "><a href="admin_logout.php" class="nav-link text-dark">Logout</a></button></li>
+        </ul>    
+    </div>
+    </div>
     </nav>
 
     <div class="container my-5">
