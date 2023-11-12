@@ -1,6 +1,7 @@
 const passwordInput1 = document.querySelector(".pass-field1 input");
 const requirementList = document.querySelectorAll(".requirement-list li");
 const passwordInput2 = document.querySelector(".pass-field2 input");
+console.log("hi\n");
 // An array of password requirements with corresponding 
 // regular expressions and index of the requirement list item
 const requirements = [
@@ -33,11 +34,11 @@ passwordInput1.addEventListener("keyup", (e) => {
     });
 });
 let submitButton = document.getElementById('submitbutton');
-//console.log(submitButton);
-submitButton.disabled = false;
-submitButton.style.cursor = "pointer";
+let checkbox=document.getElementById('form2Example3c');
+console.log(checkbox);
 passwordInput2.addEventListener("keyup", checkpassword);
 function checkpassword() {
+    console.log("hello1");
     if (passwordInput1.value == passwordInput2.value && passwordInput1.value != "") {
         requirementList[5].classList.add("valid");
         requirementList[5].firstElementChild.className = "fa-solid fa-check";
@@ -54,9 +55,11 @@ function checkpassword() {
         if (f[i] == 1)
             p++;
     }
-    if (p == 6) {
+    if (p == 6&&checkbox.checked) {
         submitButton.disabled = false;
         submitButton.style.cursor = "pointer";
+        
+        
     }
     else {
         submitButton.disabled = true;
