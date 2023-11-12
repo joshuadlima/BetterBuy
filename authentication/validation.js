@@ -34,8 +34,11 @@ passwordInput1.addEventListener("keyup", (e) => {
     });
 });
 let submitButton = document.getElementById('submitbutton');
+let checkbox=document.getElementById('form2Example3c');
+console.log(checkbox);
 passwordInput2.addEventListener("keyup", checkpassword);
 function checkpassword() {
+    console.log("hello1");
     if (passwordInput1.value == passwordInput2.value && passwordInput1.value != "") {
         requirementList[5].classList.add("valid");
         requirementList[5].firstElementChild.className = "fa-solid fa-check";
@@ -52,9 +55,11 @@ function checkpassword() {
         if (f[i] == 1)
             p++;
     }
-    if (p == 6) {
+    if (p == 6&&checkbox.checked) {
         submitButton.disabled = false;
         submitButton.style.cursor = "pointer";
+        
+        
     }
     else {
         submitButton.disabled = true;
