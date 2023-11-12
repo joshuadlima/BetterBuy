@@ -1,7 +1,7 @@
 const passwordInput1 = document.querySelector(".pass-field1 input");
 const requirementList = document.querySelectorAll(".requirement-list li");
 const passwordInput2 = document.querySelector(".pass-field2 input");
-
+console.log("hi\n");
 // An array of password requirements with corresponding 
 // regular expressions and index of the requirement list item
 const requirements = [
