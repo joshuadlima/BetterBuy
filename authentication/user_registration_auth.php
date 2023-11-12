@@ -79,7 +79,7 @@ if (isset($_POST['user_auth'])) {
 
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                             <input type="submit" value="Submit" class="btn btn-primary btn-lg"
-                                                name="user_auth" disabled >
+                                                name="user_auth">
                                         </div>
                                     </form>
 

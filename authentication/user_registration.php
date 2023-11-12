@@ -179,7 +179,7 @@ if (isset($_POST['user_register'])) {
                                         </div>
 
                                         <div class="form-check d-flex justify-content-center mb-1">
-                                            <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
+                                            <input class="form-check-input me-2" type="checkbox" onclick="checkpassword();" id="form2Example3c" />
                                             <label class="form-check-label" for="form2Example3">
                                                 I agree all statements in <a href="" onclick="termsofservice()">Terms of
                                                     service</a>
