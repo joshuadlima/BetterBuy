@@ -13,15 +13,15 @@
 
 echo 
 "
-<h3 class='text-center text-success'>All users</h3>
-<table class='table table-bordered-mt-5'>
+<h3 class='text-center text-success'>ALL USERS</h3>
+<table class='table table-bordered mt-5'>
     <thead class='bg-info text-center'>
         <tr>
-            <th>Sr. No</th>
-            <th>UserName</th>
-            <th>User email</th>
-            <th>User address</th>
-            <th>User Mobile</th>
+            <th>SR. NO.</th>
+            <th>USERNAME</th>
+            <th>USER EMAIL</th>
+            <th>USER ADDRESS</th>
+            <th>USER MOBILE</th>
         </tr>
     </thead>
 <tbody class='bg-secondary text-light'>

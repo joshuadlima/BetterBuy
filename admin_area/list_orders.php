@@ -10,17 +10,17 @@ if ($rowcount == 0) {
 
     echo
         "
-<h3 class='text-center text-success'>All orders</h3>
-<table class='table table-bordered-mt-5'>
+<h3 class='text-center text-success'>ALL ORDERS</h3>
+<table class='table table-bordered mt-5'>
     <thead class='bg-info text-center'>
         <tr>
-            <th>Serial No</th>
-            <th>Order No</th>
-            <th>Product ID</th>
-            <th>Product Name</th>
-            <th>Razor Payment ID</th>
-            <th>Product Quantity</th>
-            <th>Total cost</th>
+            <th>SERIAL NO.</th>
+            <th>ORDER NO.</th>
+            <th>PRODUCT ID</th>
+            <th>PRODUCT NAME</th>
+            <th>RAZORPAY PAYMENT ID</th>
+            <th>QUANTITY</th>
+            <th>TOTAL COST</th>
         </tr>
     </thead>
 <tbody class='bg-secondary text-light'>
