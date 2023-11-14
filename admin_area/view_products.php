@@ -45,7 +45,7 @@ if ($rowcount == 0) {
     <tr class='text-center'>
         <td>$number</td>
         <td>$product_name</td>
-        <td><img src='../product_images/$product_image' height='150px' ></td>
+        <td><img src='$product_image' height='150px' ></td>
         <td>$product_price/-</td>
         <td>$product_sold</td>
         <td><a href='index.php?delete_products=$product_id' class='btn btn-primary btn-sm'>DELETE</a></td>

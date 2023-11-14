@@ -7,19 +7,28 @@ if (isset($_POST['insert_product'])) {
     $product_price = $_POST['product_price'];
 
     //accessing images
-    $product_image = $_FILES['product_image']['name'];
+    // $product_image = $_FILES['product_image']['name'];
 
     //acessing image temp name
-    $temp_image = $_FILES['product_image']['tmp_name'];
+    // $temp_image = $_FILES['product_image']['tmp_name'];
+
+    // Specify the directory where you want to save the uploaded file
+    $target_dir = "../product_images/";
+
+    // Create the target path with a unique filename
+    $target_path = $target_dir . basename($_FILES["product_image"]["name"]);
+
+    // Move the uploaded file to the specified directory
+    move_uploaded_file($_FILES["product_image"]["tmp_name"], $target_path);
 
     //checking empty condition
-    if ($product_name == '' or $product_description == '' or $product_category == '' or $product_price == '' or $product_image == '' or $temp_image == '') {
+    if ($product_name == '' or $product_description == '' or $product_category == '' or $product_price == '') {
         echo "<script> alert('Please fill all the fields')</script>";
         exit();
     } else {
-        move_uploaded_file($temp_image, "./product_images/$product_image");
+        // move_uploaded_file($temp_image, "./product_images/$product_image");
         //insert query
-        $insert_products = "insert into products (product_name,product_description,category_id,product_image,product_price) values ('$product_name','$product_description','$product_category','$product_image','$product_price')";
+        $insert_products = "insert into products (product_name,product_description,category_id,product_image,product_price) values ('$product_name','$product_description','$product_category','$target_path','$product_price')";
         $result_query = mysqli_query($conn, $insert_products);
         if ($result_query) {
             echo "<script> alert('Product inserted successfully')</script>";
@@ -75,12 +84,14 @@ if (isset($_POST['insert_product'])) {
                 </select>
 
             </div>
+
             <!-- image -->
             <div class="form-outline mb-4 w-50 m-auto">
                 <label for="product_title" class="form-label">Product Image <Title></Title></label>
-                <input type="file" name="product_image" id="product_image" class="form-control" autocomplete="off"
-                    required>
+                <input type="file" accept="image/*" name="product_image" id="product_image" class="form-control"
+                    autocomplete="off" required>
             </div>
+
             <div class="form-outline mb-4 w-50 m-auto">
                 <label for="product_price" class="form-label">Price<Title></Title></label>
                 <input type="text" name="product_price" id="product_price" class="form-control"
