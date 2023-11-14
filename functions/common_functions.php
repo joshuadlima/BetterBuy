@@ -22,7 +22,7 @@ function get_products()
             echo "<div class='col-lg-3 col-md-6 mb-4'>
                 <div class='card shadow bg-white rounded'>
                     <div class='bg-image hover-zoom hover-overlay ripple' data-mdb-ripple-color='light'>
-                        <img src='../product_images/$product_image'
+                        <img src='$product_image'
                             class='w-100' />
                         <a href='index.php?product_id=$product_id'>
                             <div class='mask' style='background-color: rgba(251, 251, 251, 0.15);'></div>
@@ -84,7 +84,7 @@ function search_products()
             echo "<div class='col-lg-3 col-md-6 mb-4'>
                 <div class='card shadow bg-white rounded'>
                     <div class='bg-image hover-zoom hover-overlay ripple' data-mdb-ripple-color='light'>
-                        <img src='../product_images/$product_image'
+                        <img src='$product_image'
                             class='w-100' />
                         <a href='index.php?product_id=$product_id'>
                             <div class='mask' style='background-color: rgba(251, 251, 251, 0.15);'></div>
@@ -131,7 +131,7 @@ function display_single_product()
     // for the image
     echo "<div class='col-lg-6 col-md-6 mb-4'>
                 <div class='card shadow bg-white rounded'>
-                    <img src='../product_images/$product_image'
+                    <img src='$product_image'
                         class='w-100' />
                 </div>
             </div>";
