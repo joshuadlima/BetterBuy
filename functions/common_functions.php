@@ -5,7 +5,14 @@ include('../includes/connect.php');
 function get_products()
 {
     global $conn;
-    $select_query = "SELECT * FROM `products` ORDER BY rand() LIMIT 0, 8";
+    // $select_query;
+    global $select_query;
+
+    if (isset($_GET['category']))
+        $select_query = "SELECT * FROM `products` ORDER BY rand()";
+    else
+        $select_query = "SELECT * FROM `products` ORDER BY rand() LIMIT 0, 8";
+
     $result_query = mysqli_query($conn, $select_query);
 
     $count = 0;
