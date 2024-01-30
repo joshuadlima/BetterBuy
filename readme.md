@@ -5,6 +5,14 @@ The project consists of 4 modules
 <ol>
   <li>
     <h2>Authentication</h2>
+    <ul>
+      <li>
+        SignUp, SignIn, and Forgot Password with JavaScript password validation
+      </li>
+      <li>
+        Email OTP authentication using PHP Mailer
+      </li>
+    </ul>
     
   </li>
     <li>
