@@ -3,6 +3,7 @@ BetterBuy is an e-commerce website built using PHP, JavaScript, Bootstrap CSS, a
 
 The project consists of 4 modules
 <ol>
+  
   <li>
     <h2>Authentication</h2>
     <ul>
@@ -13,22 +14,30 @@ The project consists of 4 modules
         Email OTP authentication using PHP Mailer
       </li>
     </ul>
-    
   </li>
-    <li>
+  
+  <li>
     <h2>Cart</h2>
-    
+    <ul>
+      <li>
+        Add, Remove and Update Cart
+      </li>
+      <li>
+        Display Cart Summary and Subtotal
+      </li>
+    </ul>
   </li>
-    <li>
+  
+  <li>
     <h2>Payment</h2>
     <ul>
       <li>
         Integrated the RazorPay Payment Gateway
       </li>
     </ul>
-    
   </li>
-    <li>
+  
+  <li>
     <h2>Admin Area</h2>
     <ul>
       <li>
@@ -42,4 +51,5 @@ The project consists of 4 modules
       </li>
     </ul>
   </li>
+  
 </ol>
