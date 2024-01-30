@@ -30,6 +30,16 @@ The project consists of 4 modules
   </li>
     <li>
     <h2>Admin Area</h2>
-    
+    <ul>
+      <li>
+        Add, Remove and View products
+      </li>
+      <li>
+        Add and Remove Product Categories
+      </li>
+      <li>
+        View Users and User Orders
+      </li>
+    </ul>
   </li>
 </ol>
