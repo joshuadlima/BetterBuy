@@ -21,6 +21,11 @@ The project consists of 4 modules
   </li>
     <li>
     <h2>Payment</h2>
+    <ul>
+      <li>
+        Integrated the RazorPay Payment Gateway
+      </li>
+    </ul>
     
   </li>
     <li>
