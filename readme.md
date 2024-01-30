@@ -23,7 +23,7 @@ The project consists of 4 modules
         Add, Remove and Update Cart
       </li>
       <li>
-        Display Cart Summary and Subtotal
+        Display Cart Summary and SubTotal
       </li>
     </ul>
   </li>
