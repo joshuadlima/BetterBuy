@@ -1,4 +1,4 @@
-<h1>Better Buy</h1>
+<h1>BetterBuy</h1>
 <p>BetterBuy is an e-commerce website built using PHP, JavaScript, Bootstrap CSS, and SQL for its database infrastructure. Developed as a mini project for our fifth-semester web technology course.</p>
 
 <p>The project consists of 4 modules:</p>
