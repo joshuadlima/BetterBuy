@@ -11,6 +11,9 @@
         SignUp, SignIn, and Forgot Password with JavaScript password validation
       </li>
       <li>
+        Location retrieval using JavaScript Navigator object and Reverse Geocoding (openstreetmap API)
+      </li>
+      <li>
         Email OTP authentication using PHP Mailer
       </li>
     </ul>
