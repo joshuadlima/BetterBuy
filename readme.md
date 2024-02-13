@@ -71,6 +71,7 @@
 ![wt10](https://github.com/joshuadlima/BetterBuy/assets/90946664/db36b6eb-c1e3-4990-9d25-fbcb85724a79)
 
 <p>Admin Area: </p>
+
 ![wt11](https://github.com/joshuadlima/BetterBuy/assets/90946664/874692fe-e17c-4f26-85f3-edb825decf97)
 ![wt12](https://github.com/joshuadlima/BetterBuy/assets/90946664/88378e98-ef60-4962-a192-a98967b36a74)
 ![wt13](https://github.com/joshuadlima/BetterBuy/assets/90946664/117b2524-2215-4c26-b757-035876a7f8f7)
