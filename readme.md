@@ -57,24 +57,42 @@
   
 </ol>
 
-<p>Website Images: </p>
+<h2>Website Images: </h2>
 
-![wt1](https://github.com/joshuadlima/BetterBuy/assets/90946664/60391a6e-ea64-4b0b-bc30-7e62c3ee9d02)
-![wt2](https://github.com/joshuadlima/BetterBuy/assets/90946664/9cf62311-03e3-4881-a1fe-8e6a8afea85a)
-![wt3](https://github.com/joshuadlima/BetterBuy/assets/90946664/8f295b0f-22fc-4d8d-b4d5-0a7b6e075819)
-![wt4](https://github.com/joshuadlima/BetterBuy/assets/90946664/805c611a-d4e0-4c42-9616-59245985ebc4)
-![wt5](https://github.com/joshuadlima/BetterBuy/assets/90946664/56f5fe07-3bc7-407a-bd20-ee03b392ebd7)
-![wt6](https://github.com/joshuadlima/BetterBuy/assets/90946664/6c53e900-ecbc-4ff3-959f-facf6356b0cc)
-![wt7](https://github.com/joshuadlima/BetterBuy/assets/90946664/c1294614-b36e-4d6d-97f2-1d6d4275e1f7)
-![wt8](https://github.com/joshuadlima/BetterBuy/assets/90946664/0e197c0f-386f-48c9-bebe-b2c9db28f3e5)
-![wt9](https://github.com/joshuadlima/BetterBuy/assets/90946664/eda0a79b-1f50-4419-8a86-b5beb78cd57d)
-![wt10](https://github.com/joshuadlima/BetterBuy/assets/90946664/db36b6eb-c1e3-4990-9d25-fbcb85724a79)
+<br>
+![wt1](https://github.com/joshuadlima/BetterBuy/assets/90946664/e618413a-0ce3-443b-aa9f-0244a6450315)
+<br>
+![wt2](https://github.com/joshuadlima/BetterBuy/assets/90946664/50b66666-862a-45b9-bdde-2728b054dc64)
+<br>
+![wt3](https://github.com/joshuadlima/BetterBuy/assets/90946664/78ab41af-e4ae-4df1-89c8-12b3095d8f24)
+<br>
+![wt4](https://github.com/joshuadlima/BetterBuy/assets/90946664/fa43bece-a4d9-4683-b7b5-8d7964121687)
+<br>
+![wt5](https://github.com/joshuadlima/BetterBuy/assets/90946664/f069ee6f-d4ac-426b-aa2b-f340a4ec0be7)
+<br>
+![wt6](https://github.com/joshuadlima/BetterBuy/assets/90946664/7198b88a-98eb-4d17-bf05-d6cf7de47fc5)
+<br>
+![wt7](https://github.com/joshuadlima/BetterBuy/assets/90946664/e6989636-f6d6-4235-a864-ba06f618d086)
+<br>
+![wt8](https://github.com/joshuadlima/BetterBuy/assets/90946664/17f52330-53e5-46e9-9e07-8b5e94de6642)
+<br>
+![wt9](https://github.com/joshuadlima/BetterBuy/assets/90946664/558fd4f4-4f22-4621-9e8c-ca9951beb744)
+<br>
+![wt10](https://github.com/joshuadlima/BetterBuy/assets/90946664/ce553b7c-e774-4da3-b967-42c743665cc5)
+<br>
 
-<p>Admin Area: </p>
+<h2>Admin Area: </h2>
 
-![wt11](https://github.com/joshuadlima/BetterBuy/assets/90946664/874692fe-e17c-4f26-85f3-edb825decf97)
-![wt12](https://github.com/joshuadlima/BetterBuy/assets/90946664/88378e98-ef60-4962-a192-a98967b36a74)
-![wt13](https://github.com/joshuadlima/BetterBuy/assets/90946664/117b2524-2215-4c26-b757-035876a7f8f7)
-![wt14](https://github.com/joshuadlima/BetterBuy/assets/90946664/e514fdd7-1b32-4c4c-8d54-41bf86d2ecda)
-![wt15](https://github.com/joshuadlima/BetterBuy/assets/90946664/f7902e96-4bbf-4357-869c-f6c0ff24fc5b)
-![wt16](https://github.com/joshuadlima/BetterBuy/assets/90946664/222838ca-e67a-4ab7-9f1f-eb8be6fc6afc)
+<br>
+![wt11](https://github.com/joshuadlima/BetterBuy/assets/90946664/2f97cc2e-48af-44ed-9365-8c01f8493307)
+<br>
+![wt12](https://github.com/joshuadlima/BetterBuy/assets/90946664/d8f04201-98e0-47f6-8357-7e6c327f1bd0)
+<br>
+![wt13](https://github.com/joshuadlima/BetterBuy/assets/90946664/1959c973-eb9c-48f6-9f30-f7e7991471f8)
+<br>
+![wt14](https://github.com/joshuadlima/BetterBuy/assets/90946664/9c0b8b69-41f8-4682-ba23-35564915da57)
+<br>
+![wt15](https://github.com/joshuadlima/BetterBuy/assets/90946664/e121ab66-1c43-4f2d-bc15-8cf69af1e912)
+<br>
+![wt16](https://github.com/joshuadlima/BetterBuy/assets/90946664/1c07a62e-f376-4bbd-ab09-5127e6475048)
+<br>
