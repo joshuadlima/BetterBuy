@@ -155,6 +155,12 @@ function display_single_product()
                 </div>
         </div>";
 
+    // run python
+    $output = shell_exec(escapeshellcmd('python ./reccommendation.py'));
+
+    echo "I expect python data here: ";
+    echo "< " . $output . " > \n";
+
     // Others Also Bought: 
     echo "<div class='col-lg-12 col-md-12 mt-3'>
                 <div class='card shadow bg-white rounded'>
