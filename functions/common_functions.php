@@ -145,17 +145,27 @@ function display_single_product()
 
     // for the image info
     echo "<div class='col-lg-6 col-md-6 mb-4'>
-    <div class='card shadow bg-white rounded'>
-        <div class='card-body'>
-            <h5 class='card-title'>$product_name</h5>
-            <p class='card-text'>Description: $product_description</p>
-            <p class='card-text'>Rs. $product_price.00</p>
-            <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>ADD TO CART</a>
-        </div>  
-    </div>
-</div>";
+                <div class='card shadow bg-white rounded'>
+                    <div class='card-body'>
+                        <h5 class='card-title'>$product_name</h5>
+                        <p class='card-text'>Description: $product_description</p>
+                        <p class='card-text'>Rs. $product_price.00</p>
+                        <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>ADD TO CART</a>
+                    </div>  
+                </div>
+        </div>";
+
+    // Others Also Bought: 
+    echo "<div class='col-lg-12 col-md-12 mt-3'>
+                <div class='card shadow bg-white rounded'>
+                    <div class='card-body'>
+                        <h3 class='card-title'>Others Also Bought: </h3>
+                    </div>  
+                </div>
+        </div>";
 
 
+    recommend_products();
 }
 
 // get ip adress funcntion  
@@ -200,6 +210,7 @@ function cart()
         }
     }
 }
+
 //function to get cart item numbers
 function cart_item()
 {
@@ -248,6 +259,58 @@ function update_ordered_products($razorpay_payment_id)
 
         $insert_query = "INSERT INTO ordered_products(`razorpay_payment_id`, `product_id`, `product_quantity`) VALUES('$razorpay_payment_id', '$product_id', '$product_quantity')";
         mysqli_query($conn, $insert_query);
+    }
+}
+
+// product recommendations
+function recommend_products()
+{
+    global $conn;
+    // $select_query;
+    global $select_query;
+
+    $select_query = "SELECT * FROM `products` ORDER BY rand() LIMIT 0, 4";
+
+    $result_query = mysqli_query($conn, $select_query);
+
+    $count = 0;
+    while ($row_data = mysqli_fetch_assoc($result_query)) {
+        $product_id = $row_data['product_id'];
+        $product_name = $row_data['product_name'];
+        $product_price = $row_data['product_price'];
+        $product_category = $row_data['category_id'];
+        $product_image = $row_data['product_image'];
+        $product_description = $row_data['product_description'];
+
+        if (!isset($_GET['category']) or $_GET['category'] == $product_category) {
+            $count++;
+            echo "<div class='col-lg-3 col-md-6 mb-4'>
+                <div class='card shadow bg-white rounded'>
+                    <div class='bg-image hover-zoom hover-overlay ripple' data-mdb-ripple-color='light'>
+                        <img src='$product_image'
+                            class='w-100' />
+                        <a href='index.php?product_id=$product_id'>
+                            <div class='mask' style='background-color: rgba(251, 251, 251, 0.15);'></div>
+                        </a>
+                    </div>
+                    <div class='card-body'>
+                        <h5 class='card-title'>$product_name</h5>
+                        <p class='card-text'>Rs. $product_price.00</p>
+                        <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>ADD TO CART</a>
+                        <a href='index.php?product_id=$product_id' class='btn btn-primary'>VIEW MORE</a>
+                    </div>
+                </div>
+            </div>";
+        }
+    }
+
+    // in case of 0 products being displayed
+    if (!$count) {
+        echo
+            "<div class='alert alert-warning alert-dismissible fade show' role='alert' style='background-color: pink;'>
+            <strong>SORRY! NO PRODUCT HISTORY :(
+          <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+        </div>";
     }
 }
 
