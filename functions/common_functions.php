@@ -158,20 +158,24 @@ function display_single_product()
     // run python
     $output = shell_exec(escapeshellcmd('python ./reccommendation.py'));
 
-    // echo "I expect python data here: ";
-    echo "< " . $output . " > \n";
+    // decode json contents
+    $str = file_get_contents('./sample.json');
+    $json = json_decode($str, true);
+
+    // var_dump($json['40.0']);
+    // echo "< " . $json['40.0'] . " > \n";
 
     // Others Also Bought (reccommendations): 
-    // echo "<div class='col-lg-12 col-md-12 mt-3'>
-    //             <div class='card shadow bg-white rounded'>
-    //                 <div class='card-body'>
-    //                     <h3 class='card-title'>Others Also Bought: </h3>
-    //                 </div>  
-    //             </div>
-    //     </div>";
+    echo "<div class='col-lg-12 col-md-12 mt-3'>
+                <div class='card shadow bg-white rounded'>
+                    <div class='card-body'>
+                        <h3 class='card-title'>Others Also Bought: </h3>
+                    </div>  
+                </div>
+        </div>";
 
-
-    // recommend_products();
+    $key = $product_id . '.0';
+    recommend_products($key, $json);
 }
 
 // get ip adress function  
@@ -266,26 +270,27 @@ function update_ordered_products($razorpay_payment_id)
 }
 
 // product recommendations
-function recommend_products()
+function recommend_products($key, $json)
 {
-    global $conn;
-    // $select_query;
-    global $select_query;
+    if(key_exists($key, $json)){
+        $suggestions = $json[$key];
+        global $conn;
+        global $select_query;
+        
+        $count = 0;
+        while ($count < min(4, count($suggestions))) {
+            $pid = $suggestions[$count];
+            $select_query = "SELECT * FROM `products` WHERE `product_id` = $pid ORDER BY rand() LIMIT 0, 4";
+            $result_query = mysqli_query($conn, $select_query);
+            $row_data = mysqli_fetch_assoc($result_query);
 
-    $select_query = "SELECT * FROM `products` ORDER BY rand() LIMIT 0, 4";
+            $product_id = $row_data['product_id'];
+            $product_name = $row_data['product_name'];
+            $product_price = $row_data['product_price'];
+            $product_category = $row_data['category_id'];
+            $product_image = $row_data['product_image'];
+            $product_description = $row_data['product_description'];
 
-    $result_query = mysqli_query($conn, $select_query);
-
-    $count = 0;
-    while ($row_data = mysqli_fetch_assoc($result_query)) {
-        $product_id = $row_data['product_id'];
-        $product_name = $row_data['product_name'];
-        $product_price = $row_data['product_price'];
-        $product_category = $row_data['category_id'];
-        $product_image = $row_data['product_image'];
-        $product_description = $row_data['product_description'];
-
-        if (!isset ($_GET['category']) or $_GET['category'] == $product_category) {
             $count++;
             echo "<div class='col-lg-3 col-md-6 mb-4'>
                 <div class='card shadow bg-white rounded'>
@@ -306,9 +311,7 @@ function recommend_products()
             </div>";
         }
     }
-
-    // in case of 0 products being displayed
-    if (!$count) {
+    else{
         echo
             "<div class='alert alert-warning alert-dismissible fade show' role='alert' style='background-color: pink;'>
             <strong>SORRY! NO PRODUCT HISTORY :(

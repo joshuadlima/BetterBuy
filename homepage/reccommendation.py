@@ -61,4 +61,9 @@ for i in range(len(data.items())):
     value = [*set(list(data.items())[i][1])]
     dict[key] = value
 
-print(dict)
+# json_object = json.dumps(dict, indent=4)
+# print(json_object)
+
+# Convert and write JSON object to file
+with open("sample.json", "w") as outfile:
+    json.dump(dict, outfile)
