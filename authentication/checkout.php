@@ -1,6 +1,7 @@
 <?php
 include('../includes/connect.php');
 // include('../functions/common_functions.php');
+session_start();
 
 ?>
 
@@ -11,6 +12,7 @@ include('../includes/connect.php');
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BetterBuy</title>
+    <link rel="icon" type="image/x-icon" href="../resources/favicon2.png">
 
     <!-- bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -34,8 +36,8 @@ include('../includes/connect.php');
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
 
-            <a class="navbar-brand mt-2 mt-sm-0 rounded" style="background-color: red;" href="../homepage/index.php">
-                <img src="../resources/logo.png" height="50" alt="BetterBuy Logo" loading="lazy" />
+            <a class="navbar-brand mt-2 mt-sm-0 rounded" style="" href="../homepage/index.php">
+                <img src="../resources/logo1.png" height="50" alt="BetterBuy Logo" loading="lazy" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                 aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +46,7 @@ include('../includes/connect.php');
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                     <li class="nav-item">
-                        <a class="nav-link" href="../homepage/index.php">Home</a>
+                        <a class="nav-link" href="../homepage/index.php">HOME</a>
                     </li>
                 </ul>
             </div>
@@ -55,20 +57,19 @@ include('../includes/connect.php');
         <div class="col-md-12">
             <div class="row">
                 <?php
-                if (!isset($_SESSION['username'])) {
+                if (isset($_SESSION['username'])) {
+                    include('../payment/pay.php');
+                } else
                     include('user_login.php');
-                } else {
-                    include('payment.php');
-                }
                 ?>
             </div>
         </div>
     </div>
 
     <!-- footer -->
-    <footer class="p-3 text-center" style="background-color: red; color: white;">
+    <!-- <footer class="p-3 text-center" style="background-color: red; color: white;">
         © 1996-2023, BetterBuy.com, Inc. or its affiliates
-    </footer>
+    </footer> -->
 
     <!-- bootstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

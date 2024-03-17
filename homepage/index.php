@@ -7,6 +7,7 @@ session_start();
 
 ?>
 
+
 <!doctype html>
 <html lang="en">
 
@@ -14,6 +15,7 @@ session_start();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BetterBuy</title>
+    <link rel="icon" type="image/x-icon" href="../resources/favicon2.png">
 
     <!-- bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -33,12 +35,13 @@ session_start();
 </head>
 
 <body>
-    <!-- navbar -->
+
+<!-- navbar -->
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
 
-            <a class="navbar-brand mt-2 mt-sm-0 rounded" style="background-color: red;" href="index.php">
-                <img src="../resources/logo.png" height="50" alt="BetterBuy Logo" loading="lazy" />
+            <a class="navbar-brand mt-2 mt-sm-0 rounded" style="" href="index.php">
+                <img src="../resources/logo1.png" height="50" alt="BetterBuy Logo" loading="lazy" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                 aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,9 +51,6 @@ session_start();
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                     <li class="nav-item">
                         <a class="nav-link" href="index.php">HOME</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">PRODUCTS</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -62,7 +62,10 @@ session_start();
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">ABOUT</a>
+                        <a class="nav-link" href="about.php">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="orders.php">ORDERS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="cart.php">CART <i class="fa-solid fa-cart-shopping"></i>
@@ -72,16 +75,20 @@ session_start();
                     </li>
                     <li class="nav-item">
                         <span class="nav-link">TOTAL PRICE:
-                            <?php total_cart_price() ?>
+                            <?php
+                            $total = computeTotalPrice();
+                            echo "$total";
+                            ?>
                         </span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="logout.php">
-                            <?php
-                            if (isset($_SESSION['username']))
-                                echo "LOGOUT";
-                            ?>
-                        </a>
+                        <?php
+                        if (isset($_SESSION['username']))
+                            echo "<a class='nav-link' href='logout.php'>LOGOUT</a>";
+                        else
+                            echo "<a class='nav-link' href='../authentication/user_login.php'>LOGIN</a>";
+                        ?>
+
                     </li>
                 </ul>
                 <form class="d-flex">
@@ -101,7 +108,7 @@ session_start();
     <?php if (!isset($_GET['search_data_product']) and !isset($_GET['product_id']) and !isset($_GET['category'])) {
         ?>
 
-        <div  id="carouselExampleCaptions" class="carousel p-3 slide carousel-fade" data-mdb-ride="carousel">
+        <div id="carouselExampleCaptions" class="carousel p-3 slide carousel-fade" data-mdb-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-mdb-target="#carouselExampleCaptions" data-mdb-slide-to="0" class="active"
                     aria-current="true" aria-label="Slide 1"></button>
@@ -110,10 +117,9 @@ session_start();
                 <button type="button" data-mdb-target="#carouselExampleCaptions" data-mdb-slide-to="2"
                     aria-label="Slide 3"></button>
             </div>
-            <div  class="carousel-inner rounded-4">
+            <div class="carousel-inner rounded-4">
                 <div class="carousel-item active">
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%282%29.jpg"
-                        class="d-block w-100" alt="Wild Landscape" />
+                    <img src="../resources/caro1.png" class="d-block w-100" alt="Wild Landscape" />
                     <div class="mask" style="background-color: rgba(0, 0, 0, 0.4)"></div>
                     <div class="carousel-caption d-none d-sm-block mb-5" style="font-size:50px; opacity:0.8;">
                         <strong>HEY
@@ -127,15 +133,13 @@ session_start();
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%283%29.jpg"
-                        class="d-block w-100" alt="Camera" />
+                    <img src="../resources/caro2.png" class="d-block w-100" alt="Camera" />
                     <div class="mask" style="background-color: rgba(0, 0, 0, 0.4)"></div>
                     <!-- <div class="carousel-caption d-none d-md-block mb-5">
                 </div> -->
                 </div>
                 <div class="carousel-item">
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%285%29.jpg"
-                        class="d-block w-100" alt="Exotic Fruits" />
+                    <img src="../resources/caro3.png" class="d-block w-100" alt="Exotic Fruits" />
                     <div class="mask" style="background-color: rgba(0, 0, 0, 0.4)"></div>
                     <!-- <div class="carousel-caption d-none d-md-block mb-5">
                 </div> -->

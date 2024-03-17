@@ -76,7 +76,6 @@ if (isset($_POST['user_register'])) {
 
         // redirect browser
         header('Location: user_registration_auth.php');
-
     } else {
         echo "<script>alert('username already exists :(')</script>";
     }
@@ -90,10 +89,10 @@ if (isset($_POST['user_register'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BetterBuy</title>
+    <link rel="icon" type="image/x-icon" href="../resources/favicon2.png">
 
     <!-- bootstrap css -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <!-- normal css -->
     <link rel="stylesheet" href="style.css">
@@ -106,6 +105,10 @@ if (isset($_POST['user_register'])) {
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet" />
+
+    <!-- leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
 
 <body>
@@ -125,35 +128,35 @@ if (isset($_POST['user_register'])) {
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="text" id="user_username" name="user_username"
-                                                    class="form-control" required="required" />
+                                                <input type="text" id="user_username" name="user_username" class="form-control" required="required" onclick="disableButton();" />
                                                 <label class="form-label" for="user_username">Your Username</label>
                                             </div>
                                         </div>
 
                                         <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-location-dot fa-lg me-3 fa-fw"></i>
+                                            <i class="fas fa-location-dot fa-lg me-3 fa-fw mr-1"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="text" id="user_address" name="user_address"
-                                                    class="form-control" />
+                                                <input type="text" id="user_address" name="user_address" class="form-control" />
                                                 <label class="form-label" for="user_address">Your Address</label>
+                                            </div>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary" type="button" onclick="getUserLocation()">AUTO</button>
                                             </div>
                                         </div>
 
-                                        <div class="d-flex flex-row align-items-center mb-4">
+                                        <div class=" d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-phone fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="tel" id="user_phone" name="user_phone"
-                                                    class="form-control" />
-                                                <label class="form-label" for="user_phone">Your Phone Number</label>
+                                                <input type="tel" id="user_phone" name="user_phone" class="form-control" />
+                                                <label class="form-label" for="user_phone">Your Phone
+                                                    Number</label>
                                             </div>
                                         </div>
 
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="email" id="user_email" name="user_email"
-                                                    class="form-control" />
+                                                <input type="email" id="user_email" name="user_email" class="form-control" />
                                                 <label class="form-label" for="user_email">Your Email</label>
                                             </div>
                                         </div>
@@ -161,8 +164,7 @@ if (isset($_POST['user_register'])) {
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0 pass-field1">
-                                                <input type="password" id="user_password" name="user_password"
-                                                    class="form-control" />
+                                                <input type="password" id="user_password" name="user_password" class="form-control" />
                                                 <label class="form-label" for="user_password">Password</label>
                                             </div>
                                         </div>
@@ -170,18 +172,17 @@ if (isset($_POST['user_register'])) {
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0 x pass-field2">
-                                                <input type="password" id="conf_user_password" name="conf_user_password"
-                                                    class="form-control" />
+                                                <input type="password" id="conf_user_password" name="conf_user_password" class="form-control" />
                                                 <label class="form-label" for="conf_user_password">Repeat your
                                                     password</label>
                                             </div>
                                         </div>
 
                                         <div class="form-check d-flex justify-content-center mb-1">
-                                            <input class="form-check-input me-2" type="checkbox" value=""
-                                                id="form2Example3c" />
+                                            <input class="form-check-input me-2" type="checkbox" onclick="disableButton();" id="form2Example3c" />
                                             <label class="form-check-label" for="form2Example3">
-                                                I agree all statements in <a href="#!">Terms of service</a>
+                                                I agree all statements in <a href="" onclick="termsofservice()">Terms of
+                                                    service</a>
                                             </label>
                                         </div>
 
@@ -192,8 +193,8 @@ if (isset($_POST['user_register'])) {
                                         </div>
 
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                            <input type="submit" value="Register" class="btn btn-primary btn-lg" id="submitbutton"
-                                                name="user_register" >
+                                            <input type="submit" value="Register" class="btn btn-primary btn-lg" id="submitbutton" name="user_register" disabled>
+
                                             <!-- <button type="button" class="btn btn-primary btn-lg">Register</button> -->
                                         </div>
 
@@ -204,36 +205,36 @@ if (isset($_POST['user_register'])) {
                                 </div>
 
                                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1 align-self-center justify-content-center">
-                                <div class="content">
-                                    <p>Password must contains</p>
-                                    <ul class="requirement-list">
-                                        <li>
-                                            <i class="fa-solid fa-circle"></i>
-                                            <span>At least 8 characters length</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-circle"></i>
-                                            <span>At least 1 number (0...9)</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-circle"></i>
-                                            <span>At least 1 lowercase letter (a...z)</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-circle"></i>
-                                            <span>At least 1 special symbol (!...$)</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-circle"></i>
-                                            <span>At least 1 uppercase letter (A...Z)</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-circle"></i>
-                                            <span>Password match</span>
-                                        </li>
-                                    </ul>
+                                    <div class="content">
+                                        <p>Password must contain</p>
+                                        <ul class="requirement-list">
+                                            <li>
+                                                <i class="fa-solid fa-circle"></i>
+                                                <span>At least 8 characters length</span>
+                                            </li>
+                                            <li>
+                                                <i class="fa-solid fa-circle"></i>
+                                                <span>At least 1 number (0...9)</span>
+                                            </li>
+                                            <li>
+                                                <i class="fa-solid fa-circle"></i>
+                                                <span>At least 1 lowercase letter (a...z)</span>
+                                            </li>
+                                            <li>
+                                                <i class="fa-solid fa-circle"></i>
+                                                <span>At least 1 special symbol (!...$)</span>
+                                            </li>
+                                            <li>
+                                                <i class="fa-solid fa-circle"></i>
+                                                <span>At least 1 uppercase letter (A...Z)</span>
+                                            </li>
+                                            <li>
+                                                <i class="fa-solid fa-circle"></i>
+                                                <span>Password match</span>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                </div> 
                             </div>
                         </div>
                     </div>
@@ -243,15 +244,64 @@ if (isset($_POST['user_register'])) {
     </section>
 
     <!-- bootstrap js -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 
     <!-- material bootstrap js -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+
+    <script>
+        // terms of service
+        function termsofservice() {
+            var v1 = "I hereby grant explicit consent to BetterBuy.com to collect, process, and sell my personal data for their legitimate/illegitimate business purposes. ";
+            var v2 = "I acknowledge and understand that BetterBuy.com may utilize my data in accordance with their privacy policy, including but not limited to, marketing, analytics, and product/service improvements.\n\n";
+            var v3 = "Furthermore, I authorize BetterBuy.com to access and utilize my bank details for transactional purposes as necessary. ";
+            var v4 = "I am aware that this authorization allows BetterBuy.com to process financial transactions related to their services, products, or any other legitimate/illegitimate  business activities.";
+            alert(v1 + v2 + v3 + v4);
+        }
+
+        // auto address generation using leaflet
+        function getUserLocation() {
+            document.getElementById('user_address').value = "please wait...";
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+
+                    const apiUrl = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`;
+
+                    fetch(apiUrl)
+                        .then(response => response.json())
+                        .then(data => {
+                            document.getElementById('user_address').value = data.display_name;
+                        })
+                        .catch(error => {
+                            console.error('Error getting address:', error);
+                        });
+                });
+            } else {
+                alert('Geolocation is not supported by this browser.');
+            }
+        }
+        //function to disable submit button on clicking username field
+        function disableButton() {
+            submitButton.disabled = true;
+            submitButton.style.cursor = "not-allowed";
+            let checkbox=document.getElementById('form2Example3c');
+            console.log(checkbox);
+            if(checkbox.checked)
+            {
+                submitButton.disabled = false;
+                submitButton.style.cursor = "pointer";
+                checkpassword();
+            }
+            else{
+                submitButton.disabled = true;
+                submitButton.style.cursor = "not-allowed";
+            }
+        }
+    </script>
 </body>
 
 </html>
+</script>

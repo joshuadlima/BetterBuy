@@ -34,6 +34,7 @@ if (isset($_POST['user_auth'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BetterBuy</title>
+    <link rel="icon" type="image/x-icon" href="../resources/favicon2.png">
 
     <!-- bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -41,9 +42,8 @@ if (isset($_POST['user_auth'])) {
 
     <!-- normal css -->
     <link rel="stylesheet" href="homepage.css">
-    <link rel="stylesheet" href="style.css">
-    <!-- password validation js -->
-    <script src="validation.js" defer></script>
+
+
     <!-- material bootstrap -->
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
@@ -68,7 +68,7 @@ if (isset($_POST['user_auth'])) {
                                     <form method="POST" class="mx-1 mx-md-4">
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0 ">
+                                            <div class="form-outline flex-fill mb-0">
                                                 <input type="password" id="user_otp" name="user_otp"
                                                     class="form-control" />
                                                 <label class="form-label" for="user_otp">OTP</label>
@@ -77,7 +77,7 @@ if (isset($_POST['user_auth'])) {
 
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0 pass-field1">
+                                            <div class="form-outline flex-fill mb-0">
                                                 <input type="password" id="user_password" name="user_password"
                                                     class="form-control" />
                                                 <label class="form-label" for="user_password">New Password</label>
@@ -86,7 +86,7 @@ if (isset($_POST['user_auth'])) {
 
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0 pass-field2">
+                                            <div class="form-outline flex-fill mb-0">
                                                 <input type="password" id="conf_user_password" name="conf_user_password"
                                                     class="form-control" />
                                                 <label class="form-label" for="conf_user_password">Repeat your
@@ -95,55 +95,17 @@ if (isset($_POST['user_auth'])) {
                                         </div>
 
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                            <input type="submit" value="Submit" class="btn btn-primary btn-lg" id="submitbutton"
+                                            <input type="submit" value="Submit" class="btn btn-primary btn-lg"
                                                 name="user_auth">
                                         </div>
                                     </form>
 
                                 </div>
-                                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-5 order-lg-5">
+                                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 
-                                    <img src="../resources/logo.png" class="img-fluid" alt="Sample image">
+                                    <img src="../resources/logo1.png" class="img-fluid" alt="Sample image">
 
                                 </div>
-                                <div class="form-check d-flex justify-content-center mb-1 order-3 p-2">
-                                            <input class="form-check-input me-2" type="checkbox" value=""
-                                                id="form2Example3c" />
-                                            <label class="form-check-label" for="form2Example3">
-                                                I agree all statements in <a href="#!">Terms of service</a>
-                                            </label>
-                                </div>
-                                <div class="col-md-10 col-lg-6 col-xl-5 order-3 order-lg-1 align-self-center justify-content-center">
-                                <div class="content">
-                                    <p>Password must contains</p>
-                                    <ul class="requirement-list">
-                                        <li>
-                                            <i class="fa-solid fa-circle"></i>
-                                            <span>At least 8 characters length</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-circle"></i>
-                                            <span>At least 1 number (0...9)</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-circle"></i>
-                                            <span>At least 1 lowercase letter (a...z)</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-circle"></i>
-                                            <span>At least 1 special symbol (!...$)</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-circle"></i>
-                                            <span>At least 1 uppercase letter (A...Z)</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-circle"></i>
-                                            <span>Password match</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
                             </div>
                         </div>
                     </div>

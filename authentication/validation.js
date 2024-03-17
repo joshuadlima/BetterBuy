@@ -1,8 +1,7 @@
 const passwordInput1 = document.querySelector(".pass-field1 input");
 const requirementList = document.querySelectorAll(".requirement-list li");
 const passwordInput2 = document.querySelector(".pass-field2 input");
-const checkBoxElement = document.getElementById('form2Example3c');
-//console.log(checkBoxElement);
+console.log("hi\n");
 // An array of password requirements with corresponding 
 // regular expressions and index of the requirement list item
 const requirements = [
@@ -12,7 +11,7 @@ const requirements = [
     { regex: /[^A-Za-z0-9]/, index: 3 }, // At least one special character
     { regex: /[A-Z]/, index: 4 }, // At least one uppercase letter
 ]
-let f = [0, 0, 0, 0, 0, 0, 0];
+let f = [0, 0, 0, 0, 0, 0];
 //console.log(passwordInput2);
 passwordInput1.addEventListener("keyup", (e) => {
     requirements.forEach(item => {
@@ -35,19 +34,15 @@ passwordInput1.addEventListener("keyup", (e) => {
     });
 });
 let submitButton = document.getElementById('submitbutton');
-submitButton.disabled = true;
-submitButton.style.cursor = "not-allowed";
-//console.log(submitButton);
-submitButton.disabled = true;
-submitButton.style.cursor = "not-allowed";
+let checkbox=document.getElementById('form2Example3c');
+console.log(checkbox);
 passwordInput2.addEventListener("keyup", checkpassword);
-checkBoxElement.addEventListener("click",registerButtonCheck);
 function checkpassword() {
+    console.log("hello1");
     if (passwordInput1.value == passwordInput2.value && passwordInput1.value != "") {
         requirementList[5].classList.add("valid");
         requirementList[5].firstElementChild.className = "fa-solid fa-check";
         f[5] = 1;
-
     }
     else {
 
@@ -55,23 +50,16 @@ function checkpassword() {
         requirementList[5].firstElementChild.className = "fa-solid fa-circle";
         f[5] = 0;
     }
-
-}
-function registerButtonCheck() {
     let p = 0;
-    if (checkBoxElement.checked) {
-        f[6] = 1;
-    }
-    else {
-        f[6] = 0;
-    }
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 6; i++) {
         if (f[i] == 1)
             p++;
     }
-    if (p == 7) {
+    if (p == 6&&checkbox.checked) {
         submitButton.disabled = false;
         submitButton.style.cursor = "pointer";
+        
+        
     }
     else {
         submitButton.disabled = true;

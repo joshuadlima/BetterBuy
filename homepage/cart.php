@@ -1,21 +1,7 @@
 <?php
 include('../includes/connect.php');
 include('../functions/common_functions.php');
-//$ip = getIPAddress();  
-//echo 'User Real IP Address - '.$ip;  
-function computeTotalPrice()
-{
-    global $conn;
-    $total_price = 0;
-    $select_query = "SELECT quantity,product_price FROM cart_details,products WHERE cart_details.product_id=products.product_id";
-    $result_query = mysqli_query($conn, $select_query);
-    while ($row_data = mysqli_fetch_assoc($result_query)) {
-        $product_price = $row_data['product_price'];
-        $product_quantity = $row_data['quantity'];
-        $total_price += ($product_price * $product_quantity);
-    }
-    echo $total_price;
-}
+session_start();
 ?>
 
 <!doctype html>
@@ -24,7 +10,8 @@ function computeTotalPrice()
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cart details</title>
+    <title>BetterBuy</title>
+    <link rel="icon" type="image/x-icon" href="../resources/favicon2.png">
 
     <!-- bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -48,8 +35,8 @@ function computeTotalPrice()
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
 
-            <a class="navbar-brand mt-2 mt-sm-0 rounded" style="background-color: red;" href="index.php">
-                <img src="../resources/logo.png" height="50" alt="BetterBuy Logo" loading="lazy" />
+            <a class="navbar-brand mt-2 mt-sm-0 rounded" style="" href="index.php">
+                <img src="../resources/logo1.png" height="50" alt="BetterBuy Logo" loading="lazy" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                 aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,39 +45,57 @@ function computeTotalPrice()
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Products</a>
+                        <a class="nav-link" href="index.php">HOME</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Product Categories
+                            PRODUCT CATEGORIES
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <?php get_categories(); ?>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="about.php">ABOUT</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="cart.php">Cart <sup>
+                        <a class="nav-link" href="orders.php">ORDERS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.php">CART <i class="fa-solid fa-cart-shopping"></i>
+                            <sup>
                                 <?php cart_item() ?>
                             </sup></a>
                     </li>
+                    <li class="nav-item">
+                        <span class="nav-link">TOTAL PRICE:
+                            <?php
+                            $total = computeTotalPrice();
+                            echo "$total";
+                            ?>
+                        </span>
+                    </li>
+                    <li class="nav-item">
+                        <?php
+                        if (isset($_SESSION['username']))
+                            echo "<a class='nav-link' href='logout.php'>LOGOUT</a>";
+                        else
+                            echo "<a class='nav-link' href='../authentication/user_login.php'>LOGIN</a>";
+                        ?>
 
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
+
     <!-- Calling cart function  -->
     <?php
     cart();
     ?>
     <!-- table to display the cart items -->
-    <div class="container">
+    <div class="container" style="margin:auto; margin-top:50px; border-radius: 20px;">
         <div class="row">
             <table class="table table-bordered text-center">
 
@@ -109,18 +114,18 @@ function computeTotalPrice()
                     echo "
                         <thead>
                         <tr>
-                            <th>Product Title</th>
-                            <th>Product Image</th>
-                            <th>Quantity</th>
-                            <th>Total Price</th>
-                            <th>Remove</th>
-                            <th colspan='2'>Operations</th>
+                            <th>PRODUCT NAME</th>
+                            <th>PRODUCT IMAGE</th>
+                            <th>QUANTITY</th>
+                            <th>TOTAL PRICE</th>
+                            <th>REMOVE</th>
+                            <th colspan='2'>OPERATIONS</th>
                         </tr>
                     </thead>
                     <tbody> ";
                     while ($row = mysqli_fetch_array($result)) {
                         $product_id = $row['product_id'];
-                        $quantities= $row['quantity'];
+                        $quantities = $row['quantity'];
                         $select_products = "select * from products where product_id='$product_id'";
                         $result_products = mysqli_query($conn, $select_products);
                         while ($row_product_price = mysqli_fetch_array($result_products)) {
@@ -167,10 +172,12 @@ function computeTotalPrice()
                             <td><input type='checkbox' name='removeitem[]' value='$product_id'></td>
                             <td>
 
-                            <button type='submit' class='bg-info px-3 py-2 border-0 mx-3' value='$product_id' name='update_cart'>
+                            <button type='submit' class='btn btn-secondary' value='$product_id' name='update_cart'>
                                 Update Cart
                             </button>
-                                <input type='submit' class='bg-info px-3 py-2 border-0 mx-3' value='Remove Cart' name='remove_cart'>
+                            <button type='submit' class='btn btn-secondary' value='$product_id' name='remove_cart'>
+                                Remove Cart
+                            </button>
                             </td>
                             </tr>
                             </form>";
@@ -183,11 +190,14 @@ function computeTotalPrice()
             <!-- subtotal -->
             <form method="post">
                 <div class="d-flex mb-3">
-                    <h4 class="px-3">Subtotal:<strong>
-                            <?php computeTotalPrice(); ?>/-
+                    <h4 class="btn btn-dark m-2" style="pointer-events:none; box-shadow:none;">Subtotal:<strong>
+
+                            <?php
+                            $total = computeTotalPrice();
+                            echo "$total";
+                            ?>/-
                         </strong></h4>
-                    <input type="submit" class="bg-info px-3 py-2 border-0 mx-3" value="Continue Shopping"
-                        name="continue_shop">
+                    <input type="submit" class='btn btn-primary m-2' value="Continue Shopping" name="continue_shop">
                     <!-- Redirecting to homepage using 'continue shopping' button -->
                     <?php
                     if (isset($_POST['continue_shop'])) {
@@ -195,8 +205,8 @@ function computeTotalPrice()
                     }
                     ?>
                     <!-- <a> -->
-                    <button class="bg-secondary px-3 py-2 border-0">
-                        <a href="../authentication/checkout.php" style="color: black;">Checkout</a>
+                    <button class='btn btn-primary m-2'>
+                        <a href="../authentication/checkout.php" style="color: white;">Checkout</a>
                     </button>
                     <!-- </a> -->
                 </div>
