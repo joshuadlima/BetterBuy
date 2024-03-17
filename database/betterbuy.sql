@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2023 at 01:27 PM
+-- Generation Time: Mar 17, 2024 at 10:33 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -124,7 +124,12 @@ INSERT INTO `products` (`product_id`, `product_name`, `product_description`, `ca
 (36, 'Leather platform sandals', 'Sandals in leather with covered block heels and square toes. Narrow foot straps and a thin, adjustable strap around the ankle. Leather linings and insoles. Platform 2.5 cm. Heel 10 cm.', 1, '../product_images/hmgoepprod12.jpg', 5699),
 (37, 'Cashmere polo-neck dress', 'Calf-length dress in soft, fine-knit cashmere. Relaxed fit with a ribbed polo neck, low dropped shoulders and extra-long sleeves. Straight hem with a slit in each side. Ribbing at the cuffs and hem.', 11, '../product_images/hmgoepprod13.jpg', 14999),
 (38, '3-pack short cotton trunks', 'Trunks in stretch cotton jersey with flatlock seams for added comfort, short legs, covered elastication at the waist and lined front.', 5, '../product_images/m5.jpg', 1299),
-(39, '3-pack cotton short trunks', 'Trunks in stretch cotton jersey with flatlock seams for added comfort. Elasticated waist, a lined front and short legs.', 5, '../product_images/hmgoepprod0.jpg', 1499);
+(39, '3-pack cotton short trunks', 'Trunks in stretch cotton jersey with flatlock seams for added comfort. Elasticated waist, a lined front and short legs.', 5, '../product_images/hmgoepprod0.jpg', 1499),
+(40, 'Loose Fit Sweatshirt', 'Top in lightweight sweatshirt fabric made from a cotton blend with a soft brushed inside. Round, rib-trimmed neckline, dropped shoulders, long sleeves and wide ribbing at the cuffs and hem. Loose fit for a generous but not oversized silhouette', 4, '../product_images/hmgoepprod19.jpg', 799),
+(41, 'Loose Fit Zip-through hoodie', 'Zip-through hoodie in lightweight sweatshirt fabric made from a cotton blend with a soft brushed inside. Jersey-lined, drawstring hood, a zip down the front, diagonal, welt side pockets and wide ribbing at the cuffs and hem. Loose fit for a generous but n', 4, '../product_images/hmgoepprod20.jpg', 1499),
+(42, 'Straight Regular Jeans', '5-pocket jeans in cotton denim with a slight stretch for good comfort. Straight leg and a regular fit from the waist to the hem with a comfortable, looser feel around the whole leg. Regular waist and a zip fly. This is denim that lasts.', 2, '../product_images/hmgoepprod21.jpg', 1799),
+(43, 'Regular Fit Cargo trousers', 'Regular-fit cargo trousers in cotton twill with sewn-in pleats at the knees. Covered elastication at the back of the waist, zip fly and a press-stud. Welt side pockets with a press-stud, bellows leg pockets with press-studs and welt back pockets.', 2, '../product_images/hmgoepprod22.jpg', 1999),
+(45, 'Regular Fit Twill shacket', 'Shacket in sturdy cotton twill with a collar, buttons down the front and long sleeves. Open chest pocket and a straight-cut hem. Unlined. Regular fit for comfortable wear and a classic silhouette.', 4, '../product_images/hmgoepprod23.jpg', 2999);
 
 -- --------------------------------------------------------
 
@@ -247,7 +252,7 @@ ALTER TABLE `ordered_products`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `user_orders`
