@@ -1,7 +1,7 @@
 <h1>BetterBuy</h1>
-<p>BetterBuy is an e-commerce website built using PHP, JavaScript, Bootstrap CSS, and SQL for its database infrastructure. Developed as a mini project for our fifth-semester web technology course.</p>
+<p>BetterBuy is an e-commerce website built using PHP, JavaScript, Bootstrap CSS, SQL for its database infrastructure and a machine learning product recommendation system. Developed as a mini project for our fifth-semester web technology course. </p>
 
-<p>The project consists of 4 modules:</p>
+<p>The project consists of 5 modules:</p>
 <ol>
   
   <li>
@@ -51,6 +51,15 @@
       </li>
       <li>
         View Users and User Orders
+      </li>
+    </ul>
+  </li>
+
+  <li>
+    <h2>Recommendation System</h2>
+    <ul>
+      <li>
+        Integrated the Apriori Algorithm using the Python Apyori library and past user transaction history. 
       </li>
     </ul>
   </li>
@@ -130,3 +139,10 @@
 
 <br>
 
+<h2>Recommendation System (a sample snapshot of a product)</h2>
+
+<br>
+
+![rec2](https://github.com/joshuadlima/BetterBuy/assets/90946664/9f909489-5677-4d3a-a2b8-db8a7592da91)
+
+<br>
