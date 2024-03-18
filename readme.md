@@ -139,3 +139,10 @@
 
 <br>
 
+<h2>Recommendation System (a sample snapshot of a product)</h2>
+
+<br>
+
+![rec2](https://github.com/joshuadlima/BetterBuy/assets/90946664/9f909489-5677-4d3a-a2b8-db8a7592da91)
+
+<br>
