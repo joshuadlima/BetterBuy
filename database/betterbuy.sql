@@ -168,7 +168,7 @@ CREATE TABLE `user_table` (
 --
 
 INSERT INTO `user_table` (`user_id`, `username`, `user_email`, `user_password`, `user_ip`, `user_address`, `user_mobile`) VALUES
-(15, 'Joshua', 'joshuadlima123@gmail.com', '2868bae551e9544cf7a7a6406e5428ed', '127.0.0.1', 'Goa College of Engineering - Farmagudi, Ponda, South Goa District, Goa, 403404, India', 2147483647),
+(15, 'Joshua', 'joshuadlima123@gmail.com', 'b9851a8e9a9ef49deaffa30b38cb7f65', '127.0.0.1', 'Goa College of Engineering - Farmagudi, Ponda, South Goa District, Goa, 403404, India', 2147483647),
 (16, 'Noah', 'joshuadlima123@gmail.com', '12d362c786065eb9d3e3944255d1f242', '127.0.0.1', 'Mapusa Industrial Estate, Duler, Mapusa, Bardez, North Goa District, Goa, 403507, India', 1233121323),
 (17, 'Dlima', 'joshuadlima123@gmail.com', 'b9851a8e9a9ef49deaffa30b38cb7f65', '127.0.0.1', 'Mapusa Industrial Estate, Duler, Mapusa, Bardez, North Goa District, Goa, 403507, India', 2147483647);
 

@@ -260,23 +260,29 @@ function update_ordered_products($razorpay_payment_id)
     global $conn;
     $select_query = "SELECT product_id,quantity FROM cart_details";
     $result_query = mysqli_query($conn, $select_query);
+    $handle = fopen("../resources/purchase_history_apriori.csv", "a");
+    $i = 0;
     while ($row_data = mysqli_fetch_assoc($result_query)) {
         $product_id = $row_data['product_id'];
         $product_quantity = $row_data['quantity'];
-
+        $line[$i] = $product_id;
+        $i++;
+        //echo "$line";
         $insert_query = "INSERT INTO ordered_products(`razorpay_payment_id`, `product_id`, `product_quantity`) VALUES('$razorpay_payment_id', '$product_id', '$product_quantity')";
         mysqli_query($conn, $insert_query);
     }
+    fputcsv($handle, $line);
+    fclose($handle);
 }
 
 // product recommendations
 function recommend_products($key, $json)
 {
-    if(key_exists($key, $json)){
+    if (key_exists($key, $json)) {
         $suggestions = $json[$key];
         global $conn;
         global $select_query;
-        
+
         $count = 0;
         while ($count < min(4, count($suggestions))) {
             $pid = $suggestions[$count];
@@ -310,8 +316,7 @@ function recommend_products($key, $json)
                 </div>
             </div>";
         }
-    }
-    else{
+    } else {
         echo
             "<div class='alert alert-warning alert-dismissible fade show' role='alert' style='background-color: pink;'>
             <strong>SORRY! NO PRODUCT HISTORY :(
@@ -319,4 +324,3 @@ function recommend_products($key, $json)
         </div>";
     }
 }
-
